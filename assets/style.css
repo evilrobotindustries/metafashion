@@ -1,0 +1,98 @@
+:root {
+    --background: black;
+    --foreground: white;
+    --neon-green: #46F953;
+    --neon-purple: #9500FF;
+    --neon-pink: #FF44CC;
+    --neon-blue: #21F8F6;
+    --neon-orange: #FF9E3D;
+}
+
+@font-face {
+    font-family: "Druk Wide Medium";
+    src: url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.eot");
+    src: url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.svg#Druk Wide Medium") format("svg");
+}
+
+a:hover.discord {
+    color: var(--neon-purple);
+}
+a:hover.twitter {
+    color: var(--neon-blue);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.card-image {
+    background-color: silver;
+}
+.neon-blue {
+    background-color: var(--neon-blue);
+}
+.neon-green {
+    background-color: var(--neon-green);
+}
+.neon-orange {
+    background-color: var(--neon-orange);
+}
+.neon-pink {
+    background-color: var(--neon-pink);
+}
+.neon-purple {
+    background-color: var(--neon-purple);
+}
+
+html {
+    background-color: var(--background);
+    scroll-behavior: smooth;
+}
+
+.footer {
+    background-color: var(--background);
+}
+.footer a {
+    color: var(--foreground);
+}
+.footer i {
+    margin: 10px;
+}
+
+.navbar {
+    background-color: var(--background);
+    font-family: "Druk Wide Medium";
+    text-transform: uppercase;
+}
+.navbar-brand img {
+    max-height: 2.5rem;
+}
+.navbar-burger, .navbar-burger a:hover {
+    color: var(--foreground) !important;
+}
+.navbar-end a {
+    color: var(--foreground);
+}
+.navbar-end i {
+    margin: 10px;
+}
+.navbar-item {
+    color: var(--foreground);
+}
+.navbar-menu {
+    background-color: var(--background);
+}
+
+.section .title {
+    font-family: "Druk Wide Medium";
+}
+
+.title {
+    background-color: var(--background);
+    color: var(--foreground);
+}
