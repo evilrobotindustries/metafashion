@@ -6,6 +6,7 @@
     --neon-pink: #FF44CC;
     --neon-blue: #21F8F6;
     --neon-orange: #FF9E3D;
+    --fixed-navbar-height: 6rem
 }
 
 @font-face {
@@ -30,6 +31,9 @@ body {
     color: var(--foreground);
 }
 
+.card {
+    box-shadow: initial;
+}
 .card-image {
     background-color: silver;
 }
@@ -52,6 +56,11 @@ body {
 html {
     background-color: var(--background);
     scroll-behavior: smooth;
+    scroll-padding-top: var(--fixed-navbar-height);
+}
+
+.has-navbar-fixed-top {
+    padding-top: var(--fixed-navbar-height) !important;
 }
 
 .footer {
@@ -62,6 +71,21 @@ html {
 }
 .footer i {
     margin: 10px;
+}
+
+li:before {
+    content:"- ";
+}
+
+@media screen and (max-width: 1023px) {
+
+    .has-navbar-fixed-top {
+        padding-top: 3.25rem !important;
+    }
+
+    html {
+        scroll-padding-top: 2rem;
+    }
 }
 
 .navbar {
@@ -78,9 +102,6 @@ html {
 .navbar-end a {
     color: var(--foreground);
 }
-.navbar-end i {
-    margin: 10px;
-}
 .navbar-item {
     color: var(--foreground);
 }
@@ -90,9 +111,42 @@ html {
 
 .section .title {
     font-family: "Druk Wide Medium";
+    text-transform: uppercase;
+}
+
+.subtitle {
+    color: var(--foreground);
+}
+
+#roadmap, #faq {
+    background-color: #1c1c1c;
+}
+.team .card {
+    background-color: initial;
+}
+.team a {
+    color: var(--foreground);
 }
 
 .title {
-    background-color: var(--background);
     color: var(--foreground);
+}
+
+
+
+
+
+input[name="accordion-select"], .panel-block {
+    display: none;
+}
+label.panel-heading {
+    cursor: pointer;
+    display: block;
+}
+
+/* the magic */
+#panel-1:checked ~ .panel > .body-1,
+#panel-2:checked ~ .panel > .body-2,
+#panel-3:checked ~ .panel > .body-3 {
+    display: flex;
 }
