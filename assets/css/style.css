@@ -1,12 +1,12 @@
 :root {
     --background: black;
     --foreground: white;
-    --neon-primary: #00F2DE;
+    --neon-primary: #0095cc;
     --neon-green: #46F953;
     --neon-purple: #9500FF;
     --neon-pink: #FF44CC;
     --neon-blue: #21F8F6;
-    --neon-orange: #FF9E3D;
+    --neon-orange: #ef7700;
     --fixed-navbar-height: 6rem
 }
 
@@ -45,7 +45,7 @@ body {
     background-color: silver;
 }
 .neon-blue {
-    background-color: var(--neon-blue);
+    background-color: var(--neon-primary);
 }
 .neon-green {
     background-color: var(--neon-green);
@@ -167,7 +167,7 @@ ul {
     box-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
 }
 .glow-blue {
-    box-shadow: 0 0 10px var(--neon-blue), 0 0 40px var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
 }
 .glow-orange {
     box-shadow: 0 0 10px var(--neon-orange), 0 0 40px var(--neon-orange);
@@ -193,11 +193,18 @@ ul {
 #site .hero-body {
     padding: 0;
 }
-#site .hero-body video {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    object-fit: cover;
+/*#site .hero-body video {*/
+/*    width: 100%;*/
+/*    height: 100vh;*/
+/*    position: absolute;*/
+/*    object-fit: cover;*/
+/*}*/
+
+#site .hero-body {
+    background-image: url('/assets/header.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .subtitle {
@@ -221,6 +228,7 @@ ul {
 
 .timeline .tag {
     background-color: var(--neon-primary) !important;
+    color: white;
 }
 .timeline-content .heading {
     font-family: "Druk Wide Medium";
