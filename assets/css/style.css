@@ -87,6 +87,10 @@ html {
 #landing {
     background-color: var(--background);
 }
+
+#landing img {
+    width: 50%;
+}
 #loading {
     width: 30%;
 }
@@ -161,6 +165,15 @@ ul {
 
 .glow {
     box-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
+}
+.glow-blue {
+    box-shadow: 0 0 10px var(--neon-blue), 0 0 40px var(--neon-blue);
+}
+.glow-orange {
+    box-shadow: 0 0 10px var(--neon-orange), 0 0 40px var(--neon-orange);
+}
+.glow-green {
+    box-shadow: 0 0 10px var(--neon-green), 0 0 40px var(--neon-green);
 }
 
 .section .title {
