@@ -1,6 +1,7 @@
 :root {
     --background: black;
     --foreground: white;
+    --neon-primary: #00F2DE;
     --neon-green: #46F953;
     --neon-purple: #9500FF;
     --neon-pink: #FF44CC;
@@ -56,7 +57,7 @@ body {
 html {
     background-color: var(--background);
     scroll-behavior: smooth;
-    scroll-padding-top: var(--fixed-navbar-height);
+    /*scroll-padding-top: var(--fixed-navbar-height);*/
 }
 
 .has-navbar-fixed-top {
@@ -89,7 +90,7 @@ li:before {
 }
 
 .navbar {
-    background-color: var(--background);
+    background-color: initial;
     font-family: "Druk Wide Medium";
     text-transform: uppercase;
 }
@@ -99,6 +100,9 @@ li:before {
 .navbar-burger, .navbar-burger a:hover {
     color: var(--foreground) !important;
 }
+.navbar-end a:hover {
+    color: var(--neon-primary);
+}
 .navbar-end a {
     color: var(--foreground);
 }
@@ -106,7 +110,12 @@ li:before {
     color: var(--foreground);
 }
 .navbar-menu {
-    background-color: var(--background);
+    /*background-color: var(--background);*/
+    background-color: initial;
+}
+
+.hero {
+    margin-top: -6rem;
 }
 
 .section .title {
@@ -130,23 +139,4 @@ li:before {
 
 .title {
     color: var(--foreground);
-}
-
-
-
-
-
-input[name="accordion-select"], .panel-block {
-    display: none;
-}
-label.panel-heading {
-    cursor: pointer;
-    display: block;
-}
-
-/* the magic */
-#panel-1:checked ~ .panel > .body-1,
-#panel-2:checked ~ .panel > .body-2,
-#panel-3:checked ~ .panel > .body-3 {
-    display: flex;
 }
