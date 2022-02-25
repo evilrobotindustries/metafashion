@@ -59,6 +59,7 @@ body {
 
 html {
     background-color: var(--background);
+    overflow-y: auto;
     scroll-behavior: smooth;
     /*scroll-padding-top: var(--fixed-navbar-height);*/
 }
@@ -77,12 +78,27 @@ html {
     margin: 10px;
 }
 .footer img {
-    height: 6rem;
+    height: 5rem;
 }
 
-li:before {
-    content:"- ";
+#landing {
+    background-color: var(--foreground);
 }
+
+ul {
+    list-style-image: url('/assets/star.svg');
+    padding-left: 1em;
+}
+
+/*ul {*/
+/*    list-style-type: disc;*/
+/*    padding-left: 1em;*/
+/*}*/
+
+/*li:before {*/
+/*    content:"+ ";*/
+/*    font-family: "Druk Wide Medium";*/
+/*}*/
 
 @media screen and (max-width: 1023px) {
 
@@ -128,13 +144,24 @@ li:before {
     background-color: initial;
 }
 
-.hero {
-    margin-top: -6rem;
+/*.hero {*/
+/*    margin-top: -6rem;*/
+/*}*/
+
+#loading {
+    width: 30%;
+}
+.progress:indeterminate {
+    background-image: linear-gradient(to right,var(--neon-primary) 30%,#ededed 30%);
 }
 
 .section .title {
     font-family: "Druk Wide Medium";
     text-transform: uppercase;
+}
+
+#site {
+    display: none;
 }
 
 .subtitle {
@@ -170,7 +197,6 @@ li:before {
 .timeline-item::before {
     background-color: var(--neon-primary) !important;
 }
-
 .timeline-marker {
     background-color: var(--neon-primary) !important;
     border-color: var(--neon-primary) !important;
