@@ -22,12 +22,15 @@
 
 a:hover.discord {
     color: var(--neon-purple);
+    text-shadow: 0 0 10px var(--neon-purple), 0 0 40px var(--neon-purple);
 }
 a:hover.instagram {
     color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink), 0 0 40px var(--neon-pink);
 }
 a:hover.twitter {
     color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 40px var(--neon-blue);
 }
 
 body {
@@ -82,7 +85,10 @@ html {
 }
 
 #landing {
-    background-color: var(--foreground);
+    background-color: var(--background);
+}
+#loading {
+    width: 30%;
 }
 
 ul {
@@ -110,9 +116,9 @@ ul {
     /*    padding-top: 3.25rem !important;*/
     /*}*/
 
-    html {
-        scroll-padding-top: 2rem;
-    }
+    /*html {*/
+    /*    scroll-padding-top: 2rem;*/
+    /*}*/
 
     .navbar-item.is-spacer {
         display: none;
@@ -122,6 +128,8 @@ ul {
 .navbar {
     background-color: initial;
     font-family: "Druk Wide Medium";
+    position: absolute;
+    width: 100%;
     text-transform: uppercase;
 }
 .navbar-brand img {
@@ -132,6 +140,7 @@ ul {
 }
 .navbar-end a:hover {
     color: var(--neon-primary);
+    text-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
 }
 .navbar-end a {
     color: var(--foreground);
@@ -144,11 +153,14 @@ ul {
     background-color: initial;
 }
 
-#loading {
-    width: 30%;
-}
 .progress:indeterminate {
-    background-image: linear-gradient(to right,var(--neon-primary) 30%,#ededed 30%);
+    background-color: #1c1c1c;
+    background-image: linear-gradient(to right,var(--neon-primary) 30%,#1c1c1c 30%) !important;
+    box-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
+}
+
+.glow {
+    box-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
 }
 
 .section .title {
@@ -159,8 +171,20 @@ ul {
 #site {
     display: none;
 }
-#site .hero {
-    margin-top: -6rem;
+/*#site .hero {*/
+/*    margin-top: -2.8rem;*/
+/*}*/
+#site .hero.is-fullheight {
+    min-height: 100vh;
+}
+#site .hero-body {
+    padding: 0;
+}
+#site .hero-body video {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    object-fit: cover;
 }
 
 .subtitle {
@@ -170,6 +194,11 @@ ul {
 #roadmap, #faq {
     background-color: #1c1c1c;
 }
+
+#status {
+    font-family: "Druk Wide Medium";
+}
+
 .team .card {
     background-color: initial;
 }
