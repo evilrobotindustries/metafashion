@@ -23,6 +23,9 @@
 a:hover.discord {
     color: var(--neon-purple);
 }
+a:hover.instagram {
+    color: var(--neon-pink);
+}
 a:hover.twitter {
     color: var(--neon-blue);
 }
@@ -73,12 +76,19 @@ html {
 .footer i {
     margin: 10px;
 }
+.footer img {
+    height: 6rem;
+}
 
 li:before {
     content:"- ";
 }
 
 @media screen and (max-width: 1023px) {
+
+    .footer img {
+        height: 4rem;
+    }
 
     .has-navbar-fixed-top {
         padding-top: 3.25rem !important;
@@ -136,6 +146,23 @@ li:before {
 .team a {
     color: var(--foreground);
 }
+
+.timeline .tag {
+    background-color: var(--neon-primary) !important;
+}
+.timeline-header {
+    font-family: "Druk Wide Medium";
+    text-transform: uppercase;
+}
+.timeline-item::before {
+    background-color: var(--neon-primary) !important;
+}
+
+.timeline-marker {
+    background-color: var(--neon-primary) !important;
+    border-color: var(--neon-primary) !important;
+}
+
 
 .title {
     color: var(--foreground);
