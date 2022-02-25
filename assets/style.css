@@ -90,12 +90,16 @@ li:before {
         height: 4rem;
     }
 
-    .has-navbar-fixed-top {
-        padding-top: 3.25rem !important;
-    }
+    /*.has-navbar-fixed-top {*/
+    /*    padding-top: 3.25rem !important;*/
+    /*}*/
 
     html {
         scroll-padding-top: 2rem;
+    }
+
+    .navbar-item.is-spacer {
+        display: none;
     }
 }
 
@@ -150,9 +154,18 @@ li:before {
 .timeline .tag {
     background-color: var(--neon-primary) !important;
 }
+.timeline-content .heading {
+    font-family: "Druk Wide Medium";
+}
 .timeline-header {
     font-family: "Druk Wide Medium";
     text-transform: uppercase;
+}
+.timeline-item {
+    padding-bottom: 0 !important;
+}
+.timeline-item.is-last {
+    padding-bottom: 1em !important;
 }
 .timeline-item::before {
     background-color: var(--neon-primary) !important;
