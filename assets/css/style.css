@@ -144,10 +144,6 @@ ul {
     background-color: initial;
 }
 
-/*.hero {*/
-/*    margin-top: -6rem;*/
-/*}*/
-
 #loading {
     width: 30%;
 }
@@ -162,6 +158,9 @@ ul {
 
 #site {
     display: none;
+}
+#site .hero {
+    margin-top: -6rem;
 }
 
 .subtitle {
