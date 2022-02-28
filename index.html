@@ -472,9 +472,6 @@
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
-
-            bulmaCollapsible.attach();
-
             // Check if there are any navbar burgers
             const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
             if ($navbarBurgers.length > 0) {
@@ -506,6 +503,7 @@
         intro.onended = function () {
             document.getElementById('landing').style.display = 'none';
             document.getElementById('site').style.display = 'initial';
+            bulmaCollapsible.attach();
         }
     </script>
 </body>
