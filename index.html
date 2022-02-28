@@ -9,12 +9,15 @@
     <link rel="icon" type="image/svg+xml" href="assets/logo-mf.svg">
     <script src="https://kit.fontawesome.com/4fe1002595.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/bulma.min.css" />
+    <link rel="stylesheet" href="assets/css/bulma-collapsible.min.css" />
     <link rel="stylesheet" href="assets/css/bulma-timeline.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+
+    <script src="assets/js/bulma-collapsible.min.js"></script>
 </head>
 <body>
     <section id="landing" class="hero is-fullheight">
@@ -70,7 +73,21 @@
         <!--Hero-->
         <section class="hero is-fullheight">
             <div class="hero-body">
-                <p class="title">The takeover is now</p>
+                <div class="block">
+                    <p class="title">The takeover is now</p>
+                    <p class="subtitle has-text-centered">
+                        <a href="#rewards">
+                            <span class="icon is-large">
+                                <svg class="t-cover__arrow-svg" style="fill:white;" x="0px" y="0px" width="38.417px"
+                                     height="18.592px" viewBox="0 0 38.417 18.592">
+                                    <g>
+                                        <path d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
         </section>
         <!--Rewards-->
@@ -108,143 +125,183 @@
                 <!--Phase 1-->
                 <div class="timeline-phase">
                     <header class="timeline-header">
-                        <span class="tag is-medium">Phase 1</span>
+                        <a href="#phase1" data-action="collapse" data-target="#phase1">
+                            <span class="tag is-medium">
+                                Phase 1
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </a>
                     </header>
-                    <div class="timeline-item">
-                        <div class="timeline-marker is-24x24 is-image"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Ready to Launch</p>
-                            <p>LAUNCH DISCORD AND WEBSITE</p>
+                    <div class="timeline-item is-spacer"></div>
+                    <div id="phase1" class="is-collapsible is-active">
+                        <div class="timeline-item">
+                            <div class="timeline-marker is-24x24 is-image"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Ready to Launch</p>
+                                <p>LAUNCH DISCORD AND WEBSITE</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Rewards</p>
-                            <p>REWARD THE GROWING COMMUNITY WITH GIVEAWAYS INCLUDING ETH, NFTS AND SPECIAL ROLES
-                                WITHIN THE COMMUNITY WITH VIP LIST BENEFITS</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Rewards</p>
+                                <p>REWARD THE GROWING COMMUNITY WITH GIVEAWAYS INCLUDING ETH, NFTS AND SPECIAL ROLES
+                                    WITHIN THE COMMUNITY WITH VIP LIST BENEFITS</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Launch</p>
-                            <p>LAUNCH THE COLLECTION OF 10K METAFASHION AVATARS INTO THE METAVERSE</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Launch</p>
+                                <p>LAUNCH THE COLLECTION OF 10K METAFASHION AVATARS INTO THE METAVERSE</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!--Phase 2-->
                 <div class="timeline-phase">
                     <header class="timeline-header">
-                        <span class="tag is-medium">Phase 2</span>
+                        <a href="#phase2" data-action="collapse" data-target="#phase2">
+                            <span class="tag is-medium">
+                                Phase 2
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </a>
                     </header>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Foundation</p>
-                            <p>ENABLE OUR DAO SYSTEM THAT WILL ALLOW HOLDERS OF THE PROJECT TO HAVE VOTING POWER ON ALL MAJOR DECISIONS COMING TO THE PROJECT VIA SNAPSHOT</p>
+                    <div class="timeline-item is-spacer"></div>
+                    <div id="phase2" class="is-collapsible">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Foundation</p>
+                                <p>ENABLE OUR DAO SYSTEM THAT WILL ALLOW HOLDERS OF THE PROJECT TO HAVE VOTING POWER ON ALL MAJOR DECISIONS COMING TO THE PROJECT VIA SNAPSHOT</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Rewards</p>
-                            <p>CURRENT HODLERS WILL BE REWARDED WITH EXCLUSIVE AIRDROPS INCLUDING ADDITIONAL NFTS & ETH</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Rewards</p>
+                                <p>CURRENT HODLERS WILL BE REWARDED WITH EXCLUSIVE AIRDROPS INCLUDING ADDITIONAL NFTS & ETH</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Rewards</p>
-                            <p>MINTING REWARDS WILL BE DEPLOYED</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Rewards</p>
+                                <p>MINTING REWARDS WILL BE DEPLOYED</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Merchandise</p>
-                            <p>OFFICIAL MERCH STORE WILL BE RELEASED TO ALL CURRENT HODLERS WITH ACCESS TO HIGH QUALITY MERCH RELATED TO THE METAFASHION BRAND AS WELL AS IRL HIGH FASHION REPRODUCTIONS OF YOUR AVATARS GEAR</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Merchandise</p>
+                                <p>OFFICIAL MERCH STORE WILL BE RELEASED TO ALL CURRENT HODLERS WITH ACCESS TO HIGH QUALITY MERCH RELATED TO THE METAFASHION BRAND AS WELL AS IRL HIGH FASHION REPRODUCTIONS OF YOUR AVATARS GEAR</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!--Phase 3-->
                 <div class="timeline-phase">
                     <header class="timeline-header">
-                        <span class="tag is-medium">Phase 3</span>
+                        <a href="#phase3" data-action="collapse" data-target="#phase2">
+                            <span class="tag is-medium">
+                                Phase 3
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </a>
                     </header>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Giving Back</p>
-                            <p>ACTIVATE AND FUND THE COMMUNITY AND CHARITY WALLET. (DAO SYSTEM WILL BE USED TO DECIDE UPON WHICH CHARITIES WILL BE CONSIDERED)</p>
+                    <div class="timeline-item is-spacer"></div>
+                    <div id="phase3" class="is-collapsible">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Giving Back</p>
+                                <p>ACTIVATE AND FUND THE COMMUNITY AND CHARITY WALLET. (DAO SYSTEM WILL BE USED TO DECIDE UPON WHICH CHARITIES WILL BE CONSIDERED)</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Meet Up</p>
-                            <p>FIRST IRL MEET UP</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Meet Up</p>
+                                <p>FIRST IRL MEET UP</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Merchandise</p>
-                            <p>MERCH STORE IS RELEASED TO THE PUBLIC (LIMITED QUANTITY)</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Merchandise</p>
+                                <p>MERCH STORE IS RELEASED TO THE PUBLIC (LIMITED QUANTITY)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!--Phase 4-->
                 <div class="timeline-phase">
                     <header class="timeline-header">
-                        <span class="tag is-medium">Phase 4</span>
+                        <a href="#phase4" data-action="collapse" data-target="#phase2">
+                            <span class="tag is-medium">
+                                Phase 4
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </a>
                     </header>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">MetaFashion HQ</p>
-                            <p>THE METAVERSE ACTION BEGINS! DAO VOTING STARTS CONSTRUCTION OF METAFASHION HQ IN THE METAVERSE</p>
+                    <div class="timeline-item is-spacer"></div>
+                    <div id="phase4" class="is-collapsible">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">MetaFashion HQ</p>
+                                <p>THE METAVERSE ACTION BEGINS! DAO VOTING STARTS CONSTRUCTION OF METAFASHION HQ IN THE METAVERSE</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Tokenomics</p>
-                            <p>HODLERS WILL BEGIN TO RECEIVE $METAFASHION TOKEN FOR AMOUNT OF HODLING TIME</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Tokenomics</p>
+                                <p>HODLERS WILL BEGIN TO RECEIVE $METAFASHION TOKEN FOR AMOUNT OF HODLING TIME</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Airdrop</p>
-                            <p>AIRDROP TO ALL HODLERS (TIER BASED & METAVERSE READY)</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Airdrop</p>
+                                <p>AIRDROP TO ALL HODLERS (TIER BASED & METAVERSE READY)</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Metaverse</p>
-                            <p>METAVERSE IS LAUNCHED AND CONSTITUTION OF METAFASHION HQ CURATED IN A METAVERSE MEET UP</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Metaverse</p>
+                                <p>METAVERSE IS LAUNCHED AND CONSTITUTION OF METAFASHION HQ CURATED IN A METAVERSE MEET UP</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!--Phase 5-->
                 <div class="timeline-phase">
                     <header class="timeline-header">
-                        <span class="tag is-medium">Phase 5</span>
+                        <a href="#phase5" data-action="collapse" data-target="#phase2">
+                            <span class="tag is-medium">
+                                Phase 5
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </a>
                     </header>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Next Up</p>
-                            <p>METAFASHION’S NEXT DROP</p>
+                    <div class="timeline-item is-spacer"></div>
+                    <div id="phase5" class="is-collapsible">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Next Up</p>
+                                <p>METAFASHION’S NEXT DROP</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <p class="heading">Play 2 Earn</p>
-                            <p>BUILDING A FOUNDATION FOR PLAY 2 EARN</p>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p class="heading">Play 2 Earn</p>
+                                <p>BUILDING A FOUNDATION FOR PLAY 2 EARN</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -255,52 +312,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--        <div class="block">-->
-            <!--            <h5 class="title is-5">Phase One: READY TO LAUNCH</h5>-->
-            <!--            <ul>-->
-            <!--                <li>LAUNCH DISCORD AND WEBSITE</li>-->
-            <!--                <li>REWARD THE GROWING COMMUNITY WITH GIVEAWAYS INCLUDING ETH, NFTS AND SPECIAL ROLES WITHIN THE COMMUNITY WITH WHITELISTING BENEFITS</li>-->
-            <!--                <li>LAUNCH THE COLLECTION OF 10K METAFASHION AVATARS INTO THE METAVERSE</li>-->
-            <!--            </ul>-->
-            <!--        </div>-->
-
-            <!--        <div class="block">-->
-            <!--            <h5 class="title is-5">Phase Two: FOUNDATION</h5>-->
-            <!--            <ul>-->
-            <!--                <li>ENABLE OUR DAO SYSTEM THAT WILL ALLOW HOLDERS OF THE PROJECT TO HAVE VOTING POWER ON ALL MAJOR DECISIONS COMING TO THE PROJECT VIA SNAPSHOT</li>-->
-            <!--                <li>CURRENT HODLERS WILL BE REWARDED WITH EXCLUSIVE AIRDROPS INCLUDING ADDITIONAL NFTS & ETH</li>-->
-            <!--                <li>MINTING REWARDS WILL BE DEPLOYED</li>-->
-            <!--                <li>OFFICIAL MERCH STORE WILL BE RELEASED TO ALL CURRENT HODLERS WITH ACCESS TO HIGH QUALITY MERCH RELATED TO THE METAFASHION BRAND AS WELL AS IRL HIGH FASHION REPRODUCTIONS OF YOUR AVATARS GEAR</li>-->
-            <!--            </ul>-->
-            <!--        </div>-->
-
-            <!--        <div class="block">-->
-            <!--            <h5 class="title is-5">Phase 3: GIVING BACK</h5>-->
-            <!--            <ul>-->
-            <!--                <li>ACTIVATE AND FUND THE COMMUNITY AND CHARITY WALLET. (DAO SYSTEM WILL BE USED TO DECIDE UPON WHICH CHARITIES WILL BE CONSIDERED)</li>-->
-            <!--                <li>FIRST IRL MEET UP</li>-->
-            <!--                <li>MERCH STORE IS RELEASED TO THE PUBLIC (LIMITED QUANTITY)</li>-->
-            <!--            </ul>-->
-            <!--        </div>-->
-
-            <!--        <div class="block">-->
-            <!--            <h5 class="title is-5">PHASE 4: METAFASHION HQ</h5>-->
-            <!--            <ul>-->
-            <!--                <li>THE METAVERSE ACTION BEGINS! DAO VOTING STARTS CONSTRUCTION OF METAFASHION HQ IN THE METAVERSE</li>-->
-            <!--                <li>HODLERS WILL BEGIN TO RECEIVE $METAFASHION TOKEN FOR AMOUNT OF HODLING TIME</li>-->
-            <!--                <li>AIRDROP TO ALL HODLERS (TIER BASED & METAVERSE READY)</li>-->
-            <!--                <li>METAVERSE IS LAUNCHED AND CONSTITUTION OF METAFASHION HQ CURATED IN A METAVERSE MEET UP</li>-->
-            <!--            </ul>-->
-            <!--        </div>-->
-
-            <!--        <div class="block">-->
-            <!--            <h5 class="title is-5">PHASE 5: NEXT UP</h5>-->
-            <!--            <ul>-->
-            <!--                <li>METAFASHION’S NEXT DROP</li>-->
-            <!--                <li>BUILDING A FOUNDATION FOR PLAY 2 EARN</li>-->
-            <!--            </ul>-->
-            <!--        </div>-->
         </section>
         <!--Team-->
         <section class="section team" id="team">
@@ -320,14 +331,14 @@
                             <div class="media">
                                 <div class="media-content ">
                                     <p class="subtitle is-6">
-                                    <span class="icon is-medium">
+                                    <span class="icon is-large">
                                         <a class="twitter" href="https://twitter.com/captvart">
                                             <span class="icon is-rounded">
                                                 <i class="fab fa-twitter fa-2xl"></i>
                                             </span>
                                         </a>
                                     </span>
-                                        <span class="icon is-medium">
+                                        <span class="icon is-large">
                                         <a class="instagram" href="https://instagram.com/captvart">
                                             <span class="icon is-rounded">
                                                 <i class="fab fa-instagram fa-2xl"></i>
@@ -354,14 +365,14 @@
                             <div class="media">
                                 <div class="media-content ">
                                     <p class="subtitle is-6">
-                                    <span class="icon is-medium">
+                                    <span class="icon is-large">
                                         <a class="twitter" href="https://twitter.com/Jeremyalanmob">
                                             <span class="icon is-rounded">
                                                 <i class="fab fa-twitter fa-2xl"></i>
                                             </span>
                                         </a>
                                     </span>
-                                        <span class="icon is-medium">
+                                        <span class="icon is-large">
                                         <a class="instagram" href="https://instagram.com/jeremy.eggert">
                                             <span class="icon is-rounded">
                                                 <i class="fab fa-instagram fa-2xl"></i>
@@ -388,14 +399,14 @@
                             <div class="media">
                                 <div class="media-content ">
                                     <p class="subtitle is-6">
-                                    <span class="icon is-medium">
+                                    <span class="icon is-large">
                                         <a class="twitter" href="https://twitter.com/hillywrld">
                                             <span class="icon is-rounded">
                                                 <i class="fab fa-twitter fa-2xl"></i>
                                             </span>
                                         </a>
                                     </span>
-                                        <span class="icon is-medium">
+                                        <span class="icon is-large">
                                         <a class="instagram" href="https://instagram.com/hillywrld">
                                             <span class="icon is-rounded">
                                                 <i class="fab fa-instagram fa-2xl"></i>
@@ -415,7 +426,24 @@
             <h1 class="title">FAQ</h1>
 
             <div class="block">
-                Coming soon
+                <header class="question">
+                    <a href="#answer1" data-action="collapse" data-target="#answer1">
+                        Question 1 <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </header>
+                <div id="answer1" class="answer is-collapsible">
+                    Answer 1
+                </div>
+            </div>
+            <div class="block">
+                <header class="question">
+                    <a href="#answer2" data-action="collapse" data-target="#answer2">
+                        Question 2 <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </header>
+                <div id="answer2" class="answer is-collapsible">
+                    Answer 2
+                </div>
             </div>
         </section>
         <!--Footer-->
@@ -444,6 +472,9 @@
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
+
+            bulmaCollapsible.attach();
+
             // Check if there are any navbar burgers
             const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
             if ($navbarBurgers.length > 0) {
