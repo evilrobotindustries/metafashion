@@ -38,6 +38,7 @@ body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: 'Jura', sans-serif;
+    font-weight: 600;
 }
 
 .card {
@@ -61,9 +62,13 @@ html {
 #faq .question a {
     color: var(--foreground);
     font-family: "Druk Wide Medium";
+    text-transform: uppercase;
 }
 #faq .answer {
-    font-size: 1.25rem
+    text-transform: uppercase;
+}
+#faq .answer.is-active {
+    margin-top: 1.5rem;
 }
 
 .footer {
@@ -156,6 +161,7 @@ html {
 }
 .navbar-end a {
     color: var(--foreground);
+    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
 }
 .navbar-item {
     color: var(--foreground);
@@ -268,6 +274,7 @@ html {
 
 .title {
     color: var(--foreground);
+    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
 }
 
 ul {
