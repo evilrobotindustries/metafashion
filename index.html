@@ -542,11 +542,11 @@
 
         // Show site once intro video ends
         let intro = document.getElementById('intro');
-        // intro.onended = function () {
+        intro.onended = function () {
             document.getElementById('landing').style.display = 'none';
             document.getElementById('site').style.display = 'initial';
             bulmaCollapsible.attach();
-        // }
+        }
     </script>
 </body>
 </html>
