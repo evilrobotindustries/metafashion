@@ -24,7 +24,7 @@
         <section class="hero is-fullheight">
             <div class="hero-body">
                 <video autoplay muted id="intro">
-                    <source src="assets/ny50sQ6vlFIX5VFf.mp4" type="video/mp4">
+                    <source src="assets/meta-loading.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -47,25 +47,30 @@
             </div>
 
             <div id="navMenu" class="navbar-menu">
-                <div class="navbar-end">
+                <div class="navbar-start">
                     <a class="navbar-item" href="#rewards">Roadmap</a>
                     <a class="navbar-item" href="#team">Team</a>
                     <a class="navbar-item" href="#faq">FAQ</a>
-                    <div class="navbar-item is-spacer">|</div>
+                </div>
+                <div class="navbar-end">
                     <div class="navbar-item">
                         <a href="https://twitter.com/MetaFashionNFT" class="twitter">
-                        <span class="icon is-large">
-                            <i class="fab fa-twitter fa-lg"></i>
-                        </span>
+                            <span class="icon is-large">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </span>
                         </a>
                         <a href="https://discord.com" class="discord">
-                        <span class="icon is-large">
-                            <i class="fab fa-discord fa-lg"></i>
-                        </span>
+                            <span class="icon is-large">
+                                <i class="fab fa-discord fa-lg"></i>
+                            </span>
                         </a>
                         <span class="icon is-large">
-                        <i class="fab fa-instagram fa-lg"></i>
-                    </span>
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </span>
+                    </div>
+                    <div class="navbar-item is-spacer">|</div>
+                    <div class="navbar-item">
+                        <a id="vip" class="button">Claim VIP</a>
                     </div>
                 </div>
             </div>
@@ -432,7 +437,7 @@
                     </a>
                 </header>
                 <div id="mint" class="block answer is-collapsible">
-                    <p>Q2 2022: Official Date’s will be announced later</p>
+                    <p>Q2 2022 on Ethereum: Official Date’s will be announced later</p>
                 </div>
             </div>
             <div class="block">
@@ -537,11 +542,11 @@
 
         // Show site once intro video ends
         let intro = document.getElementById('intro');
-        intro.onended = function () {
+        // intro.onended = function () {
             document.getElementById('landing').style.display = 'none';
             document.getElementById('site').style.display = 'initial';
             bulmaCollapsible.attach();
-        }
+        // }
     </script>
 </body>
 </html>

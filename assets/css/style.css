@@ -1,13 +1,14 @@
 :root {
     --background: black;
     --foreground: white;
-    --neon-primary: #0095cc;
+    --neon-primary: #439dab;
+    --neon-seconday: #ce3020;
     --neon-green: #46F953;
     --neon-purple: #9500FF;
     --neon-pink: #FF44CC;
     --neon-blue: #21F8F6;
     --neon-orange: #ef7700;
-    --neon-red: #aa132f;
+    --neon-red: #ce3020;
     --fixed-navbar-height: 6rem
 }
 
@@ -23,15 +24,15 @@
 
 a:hover.discord {
     color: var(--neon-purple);
-    text-shadow: 0 0 10px var(--neon-purple), 0 0 40px var(--neon-purple);
+    text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
 }
 a:hover.instagram {
     color: var(--neon-pink);
-    text-shadow: 0 0 10px var(--neon-pink), 0 0 40px var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
 }
 a:hover.twitter {
     color: var(--neon-blue);
-    text-shadow: 0 0 10px var(--neon-blue), 0 0 40px var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
 }
 
 body {
@@ -43,6 +44,7 @@ body {
 
 .card {
     box-shadow: initial;
+    max-width: 450px;
 }
 .card-image {
     background-color: silver;
@@ -76,13 +78,14 @@ html {
 }
 .footer a {
     color: var(--neon-primary);
-    text-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
+    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
 }
 .footer i {
     margin: 10px;
 }
 .footer img {
     height: 5rem;
+    filter: drop-shadow(0 0 10px var(--neon-primary)) drop-shadow(0 0 20px var(--neon-primary));
 }
 
 .glow {
@@ -111,10 +114,8 @@ html {
     padding: 0;
 }
 #landing .hero-body video {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
 }
 #loading {
     width: 30%;
@@ -140,7 +141,7 @@ html {
 }
 
 .navbar {
-    background-color: #00000080;
+    background-color: transparent;
     font-family: "Druk Wide Medium";
     position: absolute;
     width: 100%;
@@ -148,6 +149,7 @@ html {
 }
 .navbar-brand img {
     max-height: 2.75rem;
+    filter: drop-shadow(0 0 10px var(--neon-primary));
 }
 .navbar-burger {
     height: 3.5rem;
@@ -155,22 +157,37 @@ html {
 .navbar-burger, .navbar-burger a:hover {
     color: var(--foreground) !important;
 }
-.navbar-end a:hover {
-    color: var(--neon-primary);
-    text-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
-}
-.navbar-end a {
-    color: var(--foreground);
-    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
-}
 .navbar-item {
     color: var(--foreground);
+}
+.navbar-item.is-spacer {
+    padding-left: 0 !important;
 }
 .navbar-menu {
     /*background-color: var(--background);*/
     background-color: initial;
 }
-
+.navbar-menu a:hover {
+    color: var(--neon-seconday);
+    text-shadow: 0 0 10px var(--neon-seconday), 0 0 20px var(--neon-seconday);
+}
+.navbar-menu a {
+    color: var(--foreground);
+    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
+}
+.navbar-menu #vip {
+    background-color: var(--neon-seconday);
+    box-shadow: 0 0 10px var(--neon-seconday), 0 0 20px var(--neon-seconday);
+    border-color: var(--neon-seconday);
+    border-radius: 4px;
+    text-shadow: none;
+}
+.navbar-menu #vip:hover {
+    color: var(--foreground);
+}
+.navbar-menu .navbar-start {
+    padding-left: 1em;
+}
 
 
 
@@ -213,7 +230,7 @@ html {
 }
 
 #roadmap, #faq {
-    background-color: #1c1c1c;
+    background-color: #0c0c0c;
 }
 
 #status {
@@ -225,17 +242,17 @@ html {
 }
 .team a {
     color: var(--neon-primary);
-    text-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
+    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
 }
 
 .timeline-marker {
     background-color: var(--neon-primary) !important;
-    box-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
+    box-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
     border-color: var(--neon-primary) !important;
 }
 .timeline .tag {
     background-color: var(--neon-primary) !important;
-    box-shadow: 0 0 10px var(--neon-primary), 0 0 40px var(--neon-primary);
+    box-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
     color: white;
 }
 .timeline .tag i {
@@ -285,6 +302,8 @@ li {
     padding-left: 0.5em;
 }
 
+
+
 /*ul {*/
 /*    list-style-type: disc;*/
 /*    padding-left: 1em;*/
@@ -310,6 +329,10 @@ li {
     /*html {*/
     /*    scroll-padding-top: 2rem;*/
     /*}*/
+
+    .navbar {
+        background-color: #00000080;
+    }
 
     .navbar-item.is-spacer {
         display: none;
