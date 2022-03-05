@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.0, user-scalable=no">
@@ -20,6 +20,7 @@
     <script src="assets/js/bulma-collapsible.min.js"></script>
 </head>
 <body>
+    <!--Landing-->
     <section id="landing" class="hero is-fullheight">
         <section class="hero is-fullheight">
             <div class="hero-body">
@@ -30,9 +31,10 @@
             </div>
         </section>
     </section>
+    <!--Site-->
     <div id="site">
         <!--Navigation-->
-        <nav class="navbar is-transparent is-spaced" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-transparent is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="#">
                     <img src="assets/logo.svg"
@@ -48,7 +50,8 @@
 
             <div id="navMenu" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="#rewards">Roadmap</a>
+                    <a class="navbar-item" href="#rewards">Rewards</a>
+                    <a class="navbar-item" href="#roadmap">Roadmap</a>
                     <a class="navbar-item" href="#team">Team</a>
                     <a class="navbar-item" href="#faq">FAQ</a>
                 </div>
@@ -70,7 +73,7 @@
                     </div>
                     <div class="navbar-item is-spacer">|</div>
                     <div class="navbar-item">
-                        <a id="vip" class="button">Claim VIP</a>
+                        <a class="button modal-button vip" data-target="vip">Claim VIP</a>
                     </div>
                 </div>
             </div>
@@ -96,7 +99,7 @@
             </div>
         </section>
         <!--Rewards-->
-        <section class="section" id="rewards">
+        <section id="rewards" class="section">
             <div class="columns is-variable is-8">
                 <div class="column">
                     <h4 class="title is-4">MINTING REWARDS</h4>
@@ -123,7 +126,7 @@
             </div>
         </section>
         <!--Roadmap-->
-        <section class="section" id="roadmap">
+        <section id="roadmap" class="section">
             <h1 class="title">Roadmap (Beta)</h1>
 
             <div class="timeline is-centered">
@@ -319,7 +322,7 @@
             </div>
         </section>
         <!--Team-->
-        <section class="section team" id="team">
+        <section id="team" class="section team">
             <h1 class="title">Team</h1>
             <div class="columns is-variable is-8">
                 <div class="column">
@@ -427,7 +430,7 @@
             </div>
         </section>
         <!--FAQ-->
-        <section class="section" id="faq">
+        <section id="faq" class="section" >
             <h1 class="title">FAQ</h1>
 
             <div class="block">
@@ -508,9 +511,42 @@
                 <p>All Rights Reserved</p>
             </div>
         </footer>
+        <!--VIP-->
+        <div id="vip" class="modal">
+            <div class="modal-background"></div>
+<!--            <div class="modal-card">-->
+<!--                <div class="modal-container">-->
+<!--                    <header class="modal-card-head">-->
+<!--                        <p class="modal-card-title">VIP Signup</p>-->
+<!--                        <button class="delete is-large" aria-label="close"></button>-->
+<!--                    </header>-->
+<!--                    <section class="modal-card-body">-->
+<!--                        <p>> Connect your wallet to add your address to the MetaFashion VIP list</p>-->
+<!--                        <p>> Sign the message so that only MetaFashion HQ can decrypt it</p>-->
+<!--                    </section>-->
+<!--                    <footer class="modal-card-foot">-->
+<!--                        <a class="button modal-button vip" data-target="vip">Connect Wallet</a>-->
+<!--                    </footer>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="modal-content">
+                <div class="container">
+                    <section class="section" >
+                        <h1 class="title">VIP Signup</h1>
+
+                        <div class="block">
+                            <p>> Connect your wallet to add your address to the MetaFashion VIP list</p>
+                            <p>> Sign the message so that only MetaFashion HQ can decrypt it</p>
+                        </div>
+                        <div class="block">
+                            <a class="button modal-button vip" data-target="vip">Connect Wallet</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
     </div>
-
-
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
@@ -518,35 +554,102 @@
             const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
             if ($navbarBurgers.length > 0) {
                 // Add a click event on each of them
-                $navbarBurgers.forEach( el => {
+                $navbarBurgers.forEach( burger => {
                     // Get the target from the "data-target" attribute
-                    const target = el.dataset.target;
+                    const target = burger.dataset.target;
                     const $target = document.getElementById(target);
 
-                    el.addEventListener('click', () => {
+                    burger.addEventListener('click', () => {
                         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                        el.classList.toggle('is-active');
+                        burger.classList.toggle('is-active');
                         $target.classList.toggle('is-active');
                     });
 
                     // Close menu when item clicked
-                    $target.querySelectorAll('.navbar-item').forEach( ni => {
+                    $target.querySelectorAll('.navbar-item').forEach(ni => {
                         ni.addEventListener('click', () => {
-                            el.classList.toggle('is-active');
+                            $target.querySelectorAll('.navbar-item').forEach(x => {
+                                x.classList.remove('is-active');
+                            });
+                            ni.classList.toggle('is-active');
+                            burger.classList.toggle('is-active');
                             $target.classList.toggle('is-active');
                         });
                     });
                 });
             }
+
+            const sections = document.querySelectorAll("section");
+            window.onscroll = () => {
+                let current = "";
+                const offset = 70;
+
+                sections.forEach((section) => {
+                    if (section.offsetTop === 0) return;
+                    if (window.scrollY >= section.offsetTop - offset ) {
+                        current = "#" + section.getAttribute("id"); }
+                });
+
+                const navLi = document.querySelectorAll(".navbar-item");
+                navLi.forEach((ni) => {
+                    if (ni.hash === current)
+                        ni.classList.add("is-active");
+                    else
+                        ni.classList.remove("is-active");
+                });
+            };
         });
 
         // Show site once intro video ends
-        let intro = document.getElementById('intro');
-        intro.onended = function () {
+        // let intro = document.getElementById('intro');
+        // intro.onended = function () {
             document.getElementById('landing').style.display = 'none';
             document.getElementById('site').style.display = 'initial';
             bulmaCollapsible.attach();
-        }
+
+            // Functions to open and close a modal
+            function openModal($el) {
+                $el.classList.add('is-active');
+            }
+            function closeModal($el) {
+                $el.classList.remove('is-active');
+            }
+
+            function closeAllModals() {
+                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                    closeModal($modal);
+                });
+            }
+
+            // Add a click event on buttons to open a specific modal
+            (document.querySelectorAll('.modal-button') || []).forEach(($trigger) => {
+                const modal = $trigger.dataset.target;
+                const $target = document.getElementById(modal);
+                console.log($target);
+
+                $trigger.addEventListener('click', () => {
+                    openModal($target);
+                });
+            });
+
+            // Add a click event on various child elements to close the parent modal
+            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+                const $target = $close.closest('.modal');
+
+                $close.addEventListener('click', () => {
+                    closeModal($target);
+                });
+            });
+
+            // Add a keyboard event to close all modals
+            document.addEventListener('keydown', (event) => {
+                const e = event || window.event;
+
+                if (e.keyCode === 27) { // Escape key
+                    closeAllModals();
+                }
+            });
+        // }
     </script>
 </body>
 </html>

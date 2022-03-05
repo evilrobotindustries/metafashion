@@ -9,7 +9,7 @@
     --neon-blue: #21F8F6;
     --neon-orange: #ef7700;
     --neon-red: #ce3020;
-    --fixed-navbar-height: 6rem
+    --fixed-navbar-height: 4rem
 }
 
 @font-face {
@@ -54,7 +54,7 @@ html {
     background-color: var(--background);
     overflow-y: auto;
     scroll-behavior: smooth;
-    /*scroll-padding-top: var(--fixed-navbar-height);*/
+    scroll-padding-top: var(--fixed-navbar-height);
 }
 
 .has-navbar-fixed-top {
@@ -141,7 +141,7 @@ html {
 }
 
 .navbar {
-    background-color: transparent;
+    background-color: #000000ee;
     font-family: "Druk Wide Medium";
     position: absolute;
     width: 100%;
@@ -157,8 +157,16 @@ html {
 .navbar-burger, .navbar-burger a:hover {
     color: var(--foreground) !important;
 }
+.navbar-burger span {
+    height: 2px;
+}
 .navbar-item {
     color: var(--foreground);
+}
+.navbar-item.is-active {
+    background-color: unset !important;
+    color: var(--neon-seconday) !important;
+    text-shadow: 0 0 10px var(--neon-seconday), 0 0 20px var(--neon-seconday);
 }
 .navbar-item.is-spacer {
     padding-left: 0 !important;
@@ -168,6 +176,7 @@ html {
     background-color: initial;
 }
 .navbar-menu a:hover {
+    background-color: unset;
     color: var(--neon-seconday);
     text-shadow: 0 0 10px var(--neon-seconday), 0 0 20px var(--neon-seconday);
 }
@@ -175,14 +184,17 @@ html {
     color: var(--foreground);
     text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
 }
-.navbar-menu #vip {
+a.button.vip  {
     background-color: var(--neon-seconday);
     box-shadow: 0 0 10px var(--neon-seconday), 0 0 20px var(--neon-seconday);
     border-color: var(--neon-seconday);
     border-radius: 4px;
+    color: var(--foreground);
+    font-family: "Druk Wide Medium";
     text-shadow: none;
+    text-transform: uppercase;
 }
-.navbar-menu #vip:hover {
+a.button.vip:hover {
     color: var(--foreground);
 }
 .navbar-menu .navbar-start {
@@ -199,9 +211,9 @@ html {
 #site {
     display: none;
 }
-/*#site .hero {*/
-/*    margin-top: -2.8rem;*/
-/*}*/
+#site .hero {
+    margin-top: -4rem;
+}
 #site .hero.is-fullheight {
     min-height: 100vh;
 }
@@ -224,6 +236,45 @@ html {
 #site .hero-body svg {
     margin-top: 1em;
 }
+#site #vip .modal-content {
+    width: auto;
+}
+#site #vip .container .section {
+    background-color: #000000bb;
+    box-shadow: 0 0 10px var(--foreground), 0 0 20px var(--neon-primary), 0 0 40px var(--neon-primary);
+    margin: 40px;
+}
+
+/*#site #vip .modal-card {*/
+/*    width: auto;*/
+/*}*/
+/*#site #vip .modal-card-head, #site #vip .modal-card-foot {*/
+/*    background-color: transparent;*/
+/*    border: none !important;*/
+/*    border-radius: unset;*/
+/*    padding: unset;*/
+/*}*/
+/*#site #vip .modal-card-head .delete {*/
+/*    background-color: transparent;*/
+/*}*/
+/*#site #vip .modal-card-title {*/
+/*    color: var(--foreground);*/
+/*    font-family: "Druk Wide Medium";*/
+/*    font-size: 2rem;*/
+/*    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);*/
+/*    text-transform: uppercase;*/
+/*}*/
+/*#site #vip .modal-card-body {*/
+/*    background-color: transparent;*/
+/*    padding: 1.5rem 0;*/
+/*}*/
+/*#site #vip .modal-container {*/
+/*    background-color: #00000080;*/
+/*    box-shadow: 0 0 10px var(--foreground), 0 0 20px var(--neon-primary), 0 0 40px var(--neon-primary);*/
+/*    margin: 40px;*/
+/*    padding: 3rem;*/
+/*    width: auto;*/
+/*}*/
 
 .subtitle {
     color: var(--foreground);
@@ -326,12 +377,12 @@ li {
     /*    padding-top: 3.25rem !important;*/
     /*}*/
 
-    /*html {*/
-    /*    scroll-padding-top: 2rem;*/
-    /*}*/
+    html {
+        scroll-padding-top: 2rem;
+    }
 
     .navbar {
-        background-color: #00000080;
+        background-color: #000000ee;
     }
 
     .navbar-item.is-spacer {
