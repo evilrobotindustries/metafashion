@@ -24,10 +24,18 @@
     <section id="landing" class="hero is-fullheight">
         <section class="hero is-fullheight">
             <div class="hero-body">
-                <video autoplay muted id="intro">
-                    <source src="assets/meta-loading.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <div class="container has-text-centered">
+                    <div class="block">
+                        <img src="assets/vial.webp" alt="MetaFashion" />
+                    </div>
+                    <div id="loading" class="container has-text-centered">
+                        <div class="loading block">Loading</div>
+                        <div class="progress-bar">
+                            <div class="value"></div>
+                        </div>
+                        <div id="status" class="block">1%</div>
+                    </div>
+                </div>
             </div>
         </section>
     </section>
@@ -600,9 +608,31 @@
             };
         });
 
-        // Show site once intro video ends
-        let intro = document.getElementById('intro');
-        intro.onended = function () {
+        function delay(ms){
+            return new Promise(resolve => {
+                setTimeout(resolve,ms);
+            })
+        }
+
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min) ) + min;
+        }
+
+        async function init() {
+            function setStatus(percent) {
+                document.querySelectorAll('.progress-bar .value')[0].style.width = percent + '%';
+                document.getElementById('status').innerText = percent + '%';
+            }
+
+            // Show random progress updates
+            let status = 1;
+            while (status < 100){
+                await delay(random(500,1000));
+                status = random(status, 101)
+                if (status > 100) status = 100;
+                setStatus(status);
+            }
+            await delay(500);
 
             document.getElementById('landing').style.display = 'none';
             document.getElementsByTagName('html')[0].classList.add('has-navbar-fixed-top');
@@ -652,6 +682,7 @@
                 }
             });
         }
+        init();
     </script>
 </body>
 </html>

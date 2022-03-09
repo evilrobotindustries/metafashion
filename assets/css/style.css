@@ -1,7 +1,7 @@
 :root {
     --background: black;
     --foreground: white;
-    --neon-primary: #439dab;
+    --neon-primary: #28fdff;
     --neon-seconday: #ce3020;
     --neon-green: #46F953;
     --neon-purple: #9500FF;
@@ -9,6 +9,8 @@
     --neon-blue: #21F8F6;
     --neon-orange: #ef7700;
     --neon-red: #ce3020;
+    --progress-bar-height: 0.35rem;
+    --progress-bar-radius: 20px;
     --fixed-navbar-height: 4rem
 }
 
@@ -23,15 +25,15 @@
 }
 
 a:hover.discord {
-    color: var(--neon-purple);
+    color: var(--neon-purple) !important;;
     text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
 }
 a:hover.instagram {
-    color: var(--neon-pink);
+    color: var(--neon-pink) !important;;
     text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
 }
 a:hover.twitter {
-    color: var(--neon-blue);
+    color: var(--neon-blue) !important;
     text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
 }
 
@@ -85,7 +87,6 @@ html {
 }
 .footer img {
     height: 5rem;
-    filter: drop-shadow(0 0 10px var(--neon-primary)) drop-shadow(0 0 20px var(--neon-primary));
 }
 
 .glow {
@@ -106,19 +107,21 @@ html {
 
 #landing {
     background-color: var(--background);
+    color: var(--neon-primary);
+    text-transform: uppercase;
 }
 #landing img {
-    width: 50%;
+    height: 30vh;
+    max-height: 20rem;
 }
 #landing .hero-body {
     padding: 0;
 }
-#landing .hero-body video {
-    margin-left: auto;
-    margin-right: auto;
+#landing .loading {
+    font-size: 1.5rem;
 }
-#loading {
-    width: 30%;
+#landing #status {
+    padding-top: 1em;
 }
 
 .neon-blue {
@@ -149,7 +152,6 @@ html {
 }
 .navbar-brand img {
     max-height: 2.75rem;
-    filter: drop-shadow(0 0 10px var(--neon-primary));
 }
 .navbar-burger {
     height: 3.5rem;
@@ -166,7 +168,6 @@ html {
 .navbar-item.is-active {
     background-color: unset !important;
     color: var(--neon-seconday) !important;
-    text-shadow: 0 0 10px var(--neon-seconday), 0 0 20px var(--neon-seconday);
 }
 .navbar-item.is-spacer {
     padding-left: 0 !important;
@@ -178,15 +179,12 @@ html {
 .navbar-menu a:hover {
     background-color: unset;
     color: var(--neon-seconday);
-    text-shadow: 0 0 10px var(--neon-seconday), 0 0 20px var(--neon-seconday);
 }
 .navbar-menu a {
     color: var(--foreground);
-    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
 }
 a.button.vip  {
     background-color: var(--neon-seconday);
-    box-shadow: 0 0 10px var(--neon-seconday), 0 0 20px var(--neon-seconday);
     border-color: var(--neon-seconday);
     border-radius: 4px;
     color: var(--foreground);
@@ -231,7 +229,7 @@ a.button.vip:hover {
     font-family: "Druk Wide Medium";
     font-size: 4rem !important;
     text-transform: uppercase;
-    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
+    text-shadow: none !important;
 }
 #site .hero-body svg {
     margin-top: 1em;
@@ -240,41 +238,10 @@ a.button.vip:hover {
     width: auto;
 }
 #site #vip .container .section {
-    background-color: #000000bb;
-    box-shadow: 0 0 10px var(--foreground), 0 0 20px var(--neon-primary), 0 0 40px var(--neon-primary);
+    background-color: #000000;
+    border: var(--foreground) 1px solid;
     margin: 40px;
 }
-
-/*#site #vip .modal-card {*/
-/*    width: auto;*/
-/*}*/
-/*#site #vip .modal-card-head, #site #vip .modal-card-foot {*/
-/*    background-color: transparent;*/
-/*    border: none !important;*/
-/*    border-radius: unset;*/
-/*    padding: unset;*/
-/*}*/
-/*#site #vip .modal-card-head .delete {*/
-/*    background-color: transparent;*/
-/*}*/
-/*#site #vip .modal-card-title {*/
-/*    color: var(--foreground);*/
-/*    font-family: "Druk Wide Medium";*/
-/*    font-size: 2rem;*/
-/*    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);*/
-/*    text-transform: uppercase;*/
-/*}*/
-/*#site #vip .modal-card-body {*/
-/*    background-color: transparent;*/
-/*    padding: 1.5rem 0;*/
-/*}*/
-/*#site #vip .modal-container {*/
-/*    background-color: #00000080;*/
-/*    box-shadow: 0 0 10px var(--foreground), 0 0 20px var(--neon-primary), 0 0 40px var(--neon-primary);*/
-/*    margin: 40px;*/
-/*    padding: 3rem;*/
-/*    width: auto;*/
-/*}*/
 
 .subtitle {
     color: var(--foreground);
@@ -284,9 +251,7 @@ a.button.vip:hover {
     background-color: #0c0c0c;
 }
 
-#status {
-    font-family: "Druk Wide Medium";
-}
+
 
 .team .card {
     background-color: initial;
@@ -342,7 +307,7 @@ a.button.vip:hover {
 
 .title {
     color: var(--foreground);
-    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
+    text-align: center!important;
 }
 
 ul {
@@ -352,20 +317,6 @@ ul {
 li {
     padding-left: 0.5em;
 }
-
-
-
-/*ul {*/
-/*    list-style-type: disc;*/
-/*    padding-left: 1em;*/
-/*}*/
-
-/*li:before {*/
-/*    content:"+ ";*/
-/*    font-family: "Druk Wide Medium";*/
-/*}*/
-
-
 
 @media screen and (max-width: 1023px) {
 
@@ -395,4 +346,25 @@ li {
     #site .hero-body {
         padding-bottom: 1.5rem;
     }
+}
+
+
+
+.progress-bar {
+    width: 60vw;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    height: var(--progress-bar-height);
+    background-color: rgba(254, 254, 254, 0.3);
+    border-radius: var(--progress-bar-radius);
+}
+.progress-bar .value {
+    border-bottom-left-radius: var(--progress-bar-radius);
+    border-top-left-radius: var(--progress-bar-radius);
+    box-shadow: 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
+    transition: all 0.3s ease-in-out;
+    background-color: var(--neon-primary);
+    height: var(--progress-bar-height);
+    width: 1%;
 }
