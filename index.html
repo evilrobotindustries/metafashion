@@ -91,6 +91,13 @@
         <!--Hero-->
         <section class="hero is-fullheight">
             <div class="hero-body">
+                <div class="glitch">
+                    <div class="glitch__img"></div>
+                    <div class="glitch__img"></div>
+                    <div class="glitch__img"></div>
+                    <div class="glitch__img"></div>
+                    <div class="glitch__img"></div>
+                </div>
                 <div class="block">
                     <p class="title">The takeover is now</p>
                     <p class="subtitle has-text-centered">
@@ -111,7 +118,7 @@
         <section id="rewards" class="section">
             <div class="columns is-variable is-8">
                 <div class="column">
-                    <h4 class="title is-4">MINTING REWARDS</h4>
+                    <h4 class="title">MINTING REWARDS</h4>
                     <div class="level">
                         <div class="level-item">
                             <ul>
@@ -124,7 +131,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <h4 class="title is-4">HOLDING REWARDS</h4>
+                    <h4 class="title">HOLDING REWARDS</h4>
                     <div class="level">
                         <div class="level-item">
                             <ul>
@@ -343,10 +350,9 @@
             <div class="columns is-variable is-8">
                 <div class="column">
                     <div class="card">
-                        <figure class="image is-square">
+                        <figure class="image">
                             <img class="is-rounded is-blue" src="assets/5.png" alt="Cameron Burns">
                         </figure>
-
                         <div class="card-content has-text-centered">
                             <div class="content">
                                 <p class="title is-5">Cameron Burns</p>
@@ -377,10 +383,9 @@
                 </div>
                 <div class="column">
                     <div class="card">
-                        <figure class="image is-square">
+                        <figure class="image">
                             <img class="is-rounded is-orange" src="assets/6.png" alt="Jeremy Eggert">
                         </figure>
-
                         <div class="card-content has-text-centered">
                             <div class="content">
                                 <p class="title is-4">Jeremy Eggert</p>
@@ -411,10 +416,9 @@
                 </div>
                 <div class="column">
                     <div class="card">
-                        <figure class="image is-square">
+                        <figure class="image">
                             <img class="is-rounded is-red" src="assets/9.png" alt="Hilly">
                         </figure>
-
                         <div class="card-content has-text-centered">
                             <div class="content">
                                 <p class="title is-4">Hilly</p>
@@ -630,6 +634,7 @@
             document.getElementById('landing').style.display = 'none';
             document.getElementsByTagName('html')[0].classList.add('has-navbar-fixed-top');
             document.getElementById('site').style.display = 'initial';
+            document.body.classList.add('imgloaded'); // Glitch effect
             bulmaCollapsible.attach();
 
             // Functions to open and close a modal
