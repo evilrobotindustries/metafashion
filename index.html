@@ -8,16 +8,10 @@
           content="MetaFashionNFT is a collection of 10K generative 3D art pieces about to drop on the Ethereum blockchain!" />
     <link rel="icon" type="image/svg+xml" href="assets/logo-mf.svg">
     <script src="https://kit.fontawesome.com/4fe1002595.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/bulma.min.css" />
-    <link rel="stylesheet" href="assets/css/bulma-collapsible.min.css" />
-    <link rel="stylesheet" href="assets/css/bulma-timeline.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
-
-    <script src="assets/js/bulma-collapsible.min.js"></script>
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="preload" href="/assets/fonts/Jura-Regular.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff" as="font" type="font/woff" crossorigin>
+    <script src="assets/app.js" type="module" defer></script>
 </head>
 <body>
     <!--Landing-->
@@ -234,7 +228,7 @@
                 <!--Phase 3-->
                 <div class="timeline-phase">
                     <header class="timeline-header">
-                        <a href="#phase3" data-action="collapse" data-target="#phase2">
+                        <a href="#phase3" data-action="collapse" data-target="#phase3">
                             <span class="tag is-medium">
                                 Phase 3
                                 <i class="fa-solid fa-angle-down"></i>
@@ -269,7 +263,7 @@
                 <!--Phase 4-->
                 <div class="timeline-phase">
                     <header class="timeline-header">
-                        <a href="#phase4" data-action="collapse" data-target="#phase2">
+                        <a href="#phase4" data-action="collapse" data-target="#phase4">
                             <span class="tag is-medium">
                                 Phase 4
                                 <i class="fa-solid fa-angle-down"></i>
@@ -311,7 +305,7 @@
                 <!--Phase 5-->
                 <div class="timeline-phase">
                     <header class="timeline-header">
-                        <a href="#phase5" data-action="collapse" data-target="#phase2">
+                        <a href="#phase5" data-action="collapse" data-target="#phase5">
                             <span class="tag is-medium">
                                 Phase 5
                                 <i class="fa-solid fa-angle-down"></i>
@@ -550,137 +544,5 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', () => {
-            // Check if there are any navbar burgers
-            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-            if ($navbarBurgers.length > 0) {
-                // Add a click event on each of them
-                $navbarBurgers.forEach( burger => {
-                    // Get the target from the "data-target" attribute
-                    const target = burger.dataset.target;
-                    const $target = document.getElementById(target);
-
-                    burger.addEventListener('click', () => {
-                        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                        burger.classList.toggle('is-active');
-                        $target.classList.toggle('is-active');
-                    });
-
-                    // Close menu when item clicked
-                    $target.querySelectorAll('.navbar-item').forEach(ni => {
-                        ni.addEventListener('click', () => {
-                            $target.querySelectorAll('.navbar-item').forEach(x => {
-                                x.classList.remove('is-active');
-                            });
-                            ni.classList.toggle('is-active');
-                            burger.classList.toggle('is-active');
-                            $target.classList.toggle('is-active');
-                        });
-                    });
-                });
-            }
-
-            const sections = document.querySelectorAll("section");
-            window.onscroll = () => {
-                let current = "";
-                const offset = 70;
-
-                sections.forEach((section) => {
-                    if (section.offsetTop === 0) return;
-                    if (window.scrollY >= section.offsetTop - offset ) {
-                        current = "#" + section.getAttribute("id"); }
-                });
-
-                const navLi = document.querySelectorAll(".navbar-item");
-                navLi.forEach((ni) => {
-                    if (ni.hash === current)
-                        ni.classList.add("is-active");
-                    else
-                        ni.classList.remove("is-active");
-                });
-            };
-        });
-
-        function delay(ms){
-            return new Promise(resolve => {
-                setTimeout(resolve,ms);
-            })
-        }
-
-        function random(min, max) {
-            return Math.floor(Math.random() * (max - min) ) + min;
-        }
-
-        async function init() {
-            function setStatus(percent) {
-                let indicator = document.querySelectorAll('.progress-bar .value')[0];
-                indicator.style.width = percent + '%';
-                if (percent >= 100)
-                    indicator.classList.add('is-complete');
-                document.getElementById('status').innerText = percent + '%';
-            }
-
-            // Show random progress updates
-            let status = 1;
-            while (status < 100){
-                await delay(random(500,1000));
-                status = random(status, 101)
-                if (status > 100) status = 100;
-                setStatus(status);
-            }
-            await delay(500);
-
-            document.getElementById('landing').style.display = 'none';
-            document.getElementsByTagName('html')[0].classList.add('has-navbar-fixed-top');
-            document.getElementById('site').style.display = 'initial';
-            document.body.classList.add('imgloaded'); // Glitch effect
-            bulmaCollapsible.attach();
-
-            // Functions to open and close a modal
-            function openModal($el) {
-                $el.classList.add('is-active');
-            }
-            function closeModal($el) {
-                $el.classList.remove('is-active');
-            }
-
-            function closeAllModals() {
-                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-                    closeModal($modal);
-                });
-            }
-
-            // Add a click event on buttons to open a specific modal
-            (document.querySelectorAll('.modal-button') || []).forEach(($trigger) => {
-                const modal = $trigger.dataset.target;
-                const $target = document.getElementById(modal);
-                console.log($target);
-
-                $trigger.addEventListener('click', () => {
-                    openModal($target);
-                });
-            });
-
-            // Add a click event on various child elements to close the parent modal
-            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-                const $target = $close.closest('.modal');
-
-                $close.addEventListener('click', () => {
-                    closeModal($target);
-                });
-            });
-
-            // Add a keyboard event to close all modals
-            document.addEventListener('keydown', (event) => {
-                const e = event || window.event;
-
-                if (e.keyCode === 27) { // Escape key
-                    closeAllModals();
-                }
-            });
-        }
-        init();
-    </script>
 </body>
 </html>

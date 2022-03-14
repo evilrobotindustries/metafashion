@@ -1,3 +1,7 @@
+@import "/node_modules/bulma/css/bulma.min.css";
+@import "/node_modules/@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css";
+@import "/node_modules/bulma-timeline/dist/css/bulma-timeline.min.css";
+
 :root {
     --background: black;
     --foreground: white;
@@ -34,18 +38,29 @@
 
 @font-face {
     font-family: "Druk Wide Medium";
-    src: url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.eot");
-    src: url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/7e389c5e310dc537b083e0e25ea6eab5.svg#Druk Wide Medium") format("svg");
+    src: url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot");
+    /*src: url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot?#iefix") format("embedded-opentype"),*/
+    url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff") format("woff"),
+    url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2") format("woff2"),
+    url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.ttf") format("truetype"),
+    url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.svg") format("svg");
+}
+@font-face{
+    font-family: "Jura-Regular";
+    src: url("/assets/fonts/Jura-Regular.eot");
+    /*src: url("/assets/fonts/Jura-Regular.eot?#iefix") format("embedded-opentype"),*/
+    url("/assets/fonts/Jura-Regular.woff")format("woff"),
+    url("/assets/fonts/Jura-Regular.woff2")format("woff2"),
+    url("/assets/fonts/Jura-Regular.ttf")format("truetype");
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
 }
 
 body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: 'Jura', sans-serif;
+    font-family: 'Jura-Regular', sans-serif;
     font-weight: 600;
 }
 
@@ -70,7 +85,7 @@ html {
 
 #faq .question a {
     color: var(--foreground);
-    font-family: "Druk Wide Medium";
+    font-family: "Druk Wide Medium", sans-serif;
     text-transform: uppercase;
 }
 #faq .question i {
@@ -150,7 +165,7 @@ html {
 
 .navbar {
     background-color: #000000ee;
-    font-family: "Druk Wide Medium";
+    font-family: "Druk Wide Medium", sans-serif;
     position: absolute;
     width: 100%;
     text-transform: uppercase;
@@ -194,7 +209,7 @@ a.button.vip  {
     border-color: var(--accent);
     border-radius: 4px;
     color: var(--foreground);
-    font-family: "Druk Wide Medium";
+    font-family: "Druk Wide Medium", sans-serif;
     text-transform: uppercase;
 }
 a.button.vip:hover {
@@ -206,7 +221,7 @@ a.button.vip:hover {
 }
 
 .section .title {
-    font-family: "Druk Wide Medium";
+    font-family: "Druk Wide Medium", sans-serif;
     text-transform: uppercase;
 }
 
@@ -238,7 +253,7 @@ a.button.vip:hover {
     width: 100%;
 }
 #site .hero-body .title {
-    font-family: "Druk Wide Medium";
+    font-family: "Druk Wide Medium", sans-serif;
     font-size: 4rem !important;
     text-transform: uppercase;
     text-shadow: none !important;
@@ -298,10 +313,10 @@ a.button.vip:hover {
 
 /*Timeline*/
 .timeline .timeline-content .heading {
-    font-family: "Druk Wide Medium";
+    font-family: "Druk Wide Medium", sans-serif;
 }
 .timeline .timeline-header {
-    font-family: "Druk Wide Medium";
+    font-family: "Druk Wide Medium", sans-serif;
     text-transform: uppercase;
 }
 .timeline .timeline-item {
