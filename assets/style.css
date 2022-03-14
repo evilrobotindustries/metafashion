@@ -39,7 +39,8 @@
 @font-face {
     font-family: "Druk Wide Medium";
     src: url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot");
-    /*src: url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot?#iefix") format("embedded-opentype"),*/
+    src:
+        /*url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot?#iefix") format("embedded-opentype"),*/
     url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff") format("woff"),
     url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2") format("woff2"),
     url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.ttf") format("truetype"),
@@ -48,7 +49,8 @@
 @font-face{
     font-family: "Jura-Regular";
     src: url("/assets/fonts/Jura-Regular.eot");
-    /*src: url("/assets/fonts/Jura-Regular.eot?#iefix") format("embedded-opentype"),*/
+    src:
+        /*url("/assets/fonts/Jura-Regular.eot?#iefix") format("embedded-opentype"),*/
     url("/assets/fonts/Jura-Regular.woff")format("woff"),
     url("/assets/fonts/Jura-Regular.woff2")format("woff2"),
     url("/assets/fonts/Jura-Regular.ttf")format("truetype");

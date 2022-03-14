@@ -9,7 +9,7 @@ module.exports = {
         hashFiles: ["js", "css", "svg", "png", "jpg", "webp"],
         exclude: ["snowpack.config.js"],
         hashLength: 12,
-        searchImportsIn: ["html", "js"],
+        searchImportsIn: ["html", "js", "css"],
       },
     ]
   ],
