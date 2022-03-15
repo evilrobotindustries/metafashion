@@ -6,12 +6,11 @@
     <title>MetaFashion</title>
     <meta name="description"
           content="MetaFashionNFT is a collection of 10K generative 3D art pieces about to drop on the Ethereum blockchain!" />
-    <link rel="icon" type="image/svg+xml" href="assets/logo-mf.svg">
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-mf.svg">
     <script src="https://kit.fontawesome.com/4fe1002595.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/style.css" />
-    <link rel="preload" href="/assets/fonts/Jura-Regular.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff" as="font" type="font/woff" crossorigin>
-    <script src="assets/app.js" type="module" defer></script>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="preload" href="/assets/fonts/Jura-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="/assets/app.js" type="module" defer></script>
 </head>
 <body>
     <!--Landing-->
@@ -20,7 +19,7 @@
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="block">
-                        <img src="assets/vial.webp" alt="MetaFashion" />
+                        <img src="/assets/vial.webp" alt="MetaFashion" />
                     </div>
                     <div id="loading" class="container has-text-centered">
                         <div class="loading block">Loading</div>
@@ -39,7 +38,7 @@
         <nav class="navbar is-transparent is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="#">
-                    <img src="assets/logo.svg"
+                    <img src="/assets/logo.svg"
                          alt="MetaFashionNFT is a collection of 10K generative 3D art pieces about to drop on the Ethereum blockchain!">
                 </a>
 
@@ -85,23 +84,19 @@
         <!--Hero-->
         <section class="hero is-fullheight">
             <div class="hero-body">
-                <div class="glitch">
-                    <div class="glitch__img"></div>
-                    <div class="glitch__img"></div>
-                    <div class="glitch__img"></div>
-                    <div class="glitch__img"></div>
-                    <div class="glitch__img"></div>
+                <div id="hero-image">
+                    <div class="glitch-image"></div>
+                    <div class="glitch-image"></div>
+                    <div class="glitch-image"></div>
+                    <div class="glitch-image"></div>
+                    <div class="glitch-image"></div>
                 </div>
                 <div class="block">
                     <p class="title">The takeover is now</p>
                     <p class="subtitle has-text-centered">
                         <a href="#rewards">
                             <span class="icon is-large">
-                                <svg class="arrow" style="fill:white;" x="0px" y="0px" viewBox="0 0 38.417 18.592">
-                                    <g>
-                                        <path d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z"></path>
-                                    </g>
-                                </svg>
+                                <img class="arrow" src="/assets/arrow.svg" alt="Scroll for more"/>
                             </span>
                         </a>
                     </p>
@@ -345,7 +340,7 @@
                 <div class="column">
                     <div class="card">
                         <figure class="image">
-                            <img class="is-rounded is-blue" src="assets/5.png" alt="Cameron Burns">
+                            <img class="is-rounded is-blue" src="/assets/cb.png" alt="Cameron Burns">
                         </figure>
                         <div class="card-content has-text-centered">
                             <div class="content">
@@ -378,7 +373,7 @@
                 <div class="column">
                     <div class="card">
                         <figure class="image">
-                            <img class="is-rounded is-orange" src="assets/6.png" alt="Jeremy Eggert">
+                            <img class="is-rounded is-orange" src="/assets/je.png" alt="Jeremy Eggert">
                         </figure>
                         <div class="card-content has-text-centered">
                             <div class="content">
@@ -411,7 +406,7 @@
                 <div class="column">
                     <div class="card">
                         <figure class="image">
-                            <img class="is-rounded is-red" src="assets/9.png" alt="Hilly">
+                            <img class="is-rounded is-red" src="/assets/h.png" alt="Hilly">
                         </figure>
                         <div class="card-content has-text-centered">
                             <div class="content">
@@ -504,7 +499,7 @@
         <!--Footer-->
         <footer class="footer">
             <div class="content has-text-centered">
-                <img src="assets/logo.svg"
+                <img src="/assets/logo.svg"
                      alt="MetaFashionNFT is a collection of 10K generative 3D art pieces about to drop on the Ethereum blockchain!">
             </div>
             <div class="content has-text-centered">
@@ -543,6 +538,5 @@
             <button class="modal-close is-large" aria-label="close"></button>
         </div>
     </div>
-
 </body>
 </html>

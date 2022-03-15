@@ -1,5 +1,17 @@
 import bulmaCollapsible from '@creativebulma/bulma-collapsible';
 
+const font = new FontFace("Druk Wide Medium",
+    "url(\"/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2\") format(\"woff2\")");
+const images = [
+    '/assets/logo.svg',
+    '/assets/header.jpg',
+    '/assets/star.svg',
+    '/assets/arrow.svg',
+    '/assets/cb.png',
+    '/assets/je.png',
+    '/assets/h.png',
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     // Check if there are any navbar burgers
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -31,10 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set menu items as active as user scrolls through sections
     const sections = document.querySelectorAll("section");
+    const nav = document.getElementsByTagName("nav")[0];
     const navbarItems = document.querySelectorAll(".navbar-item");
     const offset = 70;
     window.onscroll = () => {
         let current = "";
+
+        // Add class to nav once user scrolls
+        if (window.scrollY > 10)
+            nav.classList.add('scroll');
+        else
+            nav.classList.remove('scroll');
 
         sections.forEach((section) => {
             if (section.offsetTop === 0) return;
@@ -62,29 +81,30 @@ function random(min, max) {
 }
 
 async function init() {
-    // Show random progress updates
-    let status = 1;
-    while (status < 100){
-        await delay(random(500,1000));
-        status = random(status, 101)
-        if (status > 100) status = 100;
-        setStatus(status);
+    // Cache assets
+    const total = images.length + 1;
+    const status = document.getElementById('status');
+    for (const asset of images) {
+        new Image().src = asset;
+        setStatus(status, ((images.indexOf(asset) + 1) / total) * 100);
     }
-    await delay(500);
+    await font.load();
+    setStatus(status,100);
+    await delay(350);
 
-    function setStatus(percent) {
+    function setStatus(status, percent) {
         let indicator = document.querySelectorAll('.progress-bar .value')[0];
         indicator.style.width = percent + '%';
         if (percent >= 100)
             indicator.classList.add('is-complete');
-        document.getElementById('status').innerText = percent + '%';
+        status.innerText = percent + '%';
     }
 
     // Hide loading page and show site
     document.getElementById('landing').style.display = 'none';
     document.getElementsByTagName('html')[0].classList.add('has-navbar-fixed-top');
+    document.getElementById('hero-image').classList.add('glitch'); // Glitch effect
     document.getElementById('site').style.display = 'initial';
-    document.body.classList.add('imgloaded'); // Glitch effect
     bulmaCollapsible.attach('.is-collapsible');
 
     // Functions to open and close a modal

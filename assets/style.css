@@ -10,30 +10,6 @@
     --progress-bar-height: 0.5rem;
     --progress-bar-radius: 20px;
     --fixed-navbar-height: 4rem;
-
-    /*Glitch effect: https://github.com/codrops/CSSGlitchEffect*/
-    --color-text: #fff;
-    --color-bg: #000;
-    --color-link: #f9d77e;
-    --color-link-hover: #fff;
-    --color-info: #efc453;
-    --glitch-width: 100vw;
-    --glitch-height: 100vh;
-    --gap-horizontal: 10px;
-    --gap-vertical: 5px;
-    --time-anim: 4s;
-    --delay-anim: 2s;
-    --blend-mode-1: none;
-    --blend-mode-2: none;
-    --blend-mode-3: none;
-    --blend-mode-4: none;
-    --blend-mode-5: overlay;
-    --blend-color-1: transparent;
-    --blend-color-2: transparent;
-    --blend-color-3: transparent;
-    --blend-color-4: transparent;
-    /*--blend-color-5: #af4949;*/
-    --blend-color-5: #0386b2;
 }
 
 @font-face {
@@ -41,19 +17,19 @@
     src: url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot");
     src:
         /*url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot?#iefix") format("embedded-opentype"),*/
-    url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff") format("woff"),
-    url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2") format("woff2"),
-    url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.ttf") format("truetype"),
-    url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.svg") format("svg");
+            url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2") format("woff2"),
+            url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff") format("woff"),
+            url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.ttf") format("truetype"),
+            url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.svg") format("svg");
 }
 @font-face{
     font-family: "Jura-Regular";
     src: url("/assets/fonts/Jura-Regular.eot");
     src:
         /*url("/assets/fonts/Jura-Regular.eot?#iefix") format("embedded-opentype"),*/
-    url("/assets/fonts/Jura-Regular.woff")format("woff"),
-    url("/assets/fonts/Jura-Regular.woff2")format("woff2"),
-    url("/assets/fonts/Jura-Regular.ttf")format("truetype");
+            url("/assets/fonts/Jura-Regular.woff2")format("woff2"),
+            url("/assets/fonts/Jura-Regular.woff")format("woff"),
+            url("/assets/fonts/Jura-Regular.ttf")format("truetype");
     font-weight:normal;
     font-style:normal;
     font-display:swap;
@@ -65,14 +41,6 @@ body {
     font-family: 'Jura-Regular', sans-serif;
     font-weight: 600;
 }
-
-/*.card {*/
-/*    box-shadow: initial;*/
-/*    max-width: 450px;*/
-/*}*/
-/*.card-image {*/
-/*    background-color: silver;*/
-/*}*/
 
 html {
     background-color: var(--background);
@@ -166,11 +134,20 @@ html {
 }
 
 .navbar {
-    background-color: #000000ee;
+    /*background-color: #000000ee;*/
+    background-color: transparent;
     font-family: "Druk Wide Medium", sans-serif;
     position: absolute;
     width: 100%;
     text-transform: uppercase;
+}
+.navbar.scroll {
+    background-color: #000000ee;
+    -webkit-transition: background-color 500ms ease-in;
+    -moz-transition: background-color 500ms ease-in;
+    -o-transition: background-color 500ms ease-in;
+    -ms-transition: background-color 500ms ease-in;
+    transition: background-color 500ms ease-in;
 }
 .navbar-brand img {
     max-height: 2.75rem;
@@ -232,9 +209,9 @@ a.button.vip:hover {
     display: none;
 }
 #site .arrow {
-    animation: pulse 3s infinite ease-in-out;
+    animation: hover 3s infinite ease-in-out;
 }
-@keyframes pulse {
+@keyframes hover {
     0% { transform: translateY(0); }
     50% { transform: translateY(10px); }
 }
@@ -245,8 +222,7 @@ a.button.vip:hover {
     min-height: 100vh;
 }
 #site .hero-body {
-    align-items: end;
-    background-image: url('/assets/header.jpg');
+    align-items: flex-end;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -297,6 +273,7 @@ a.button.vip:hover {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
+    max-width: 35rem;
 }
 .team .is-blue {
     background-color: var(--accent);
@@ -381,12 +358,8 @@ li {
 @media screen and (max-width: 1023px) {
 
     .footer img {
-        height: 4rem;
+        height: 3rem;
     }
-
-    /*.has-navbar-fixed-top {*/
-    /*    padding-top: 3.25rem !important;*/
-    /*}*/
 
     html {
         scroll-padding-top: 2rem;
@@ -409,7 +382,6 @@ li {
 }
 
 @media screen and (max-width: 500px) {
-
     .navbar-brand  {
         height: 4rem;
     }
@@ -419,13 +391,43 @@ li {
         position: absolute;
         justify-content: center;
     }
-
 }
 
 
-
-
 /* Glitch styles */
+:root {
+    --background: black;
+    --foreground: white;
+    --accent: #0386b2;
+    --progress-bar-color: #28fdff;
+    --progress-bar-height: 0.5rem;
+    --progress-bar-radius: 20px;
+    --fixed-navbar-height: 4rem;
+
+    /*Glitch effect: https://github.com/codrops/CSSGlitchEffect*/
+    --color-text: #fff;
+    --color-bg: #000;
+    --color-link: #f9d77e;
+    --color-link-hover: #fff;
+    --color-info: #efc453;
+    --glitch-width: 100vw;
+    --glitch-height: 100vh;
+    --gap-horizontal: 10px;
+    --gap-vertical: 5px;
+    --time-anim: 4s;
+    --delay-anim: 2s;
+    --blend-mode-1: none;
+    --blend-mode-2: none;
+    --blend-mode-3: none;
+    --blend-mode-4: none;
+    --blend-mode-5: overlay;
+    --blend-color-1: transparent;
+    --blend-color-2: transparent;
+    --blend-color-3: transparent;
+    --blend-color-4: transparent;
+    --blend-color-5: var(--accent);
+}
+
 .glitch {
     position: absolute;
     top: 0;
@@ -435,7 +437,8 @@ li {
     overflow: hidden;
 }
 
-.glitch__img {
+/*noinspection CssReplaceWithShorthandSafely*/
+.glitch .glitch-image {
     position: absolute;
     top: calc(-1 * var(--gap-vertical));
     left: calc(-1 * var(--gap-horizontal));
@@ -448,43 +451,42 @@ li {
     background-blend-mode: var(--blend-mode-1);
 }
 
-.glitch__img:nth-child(n+2) {
+.glitch .glitch-image:nth-child(n+2) {
     opacity: 0;
 }
 
-.imgloaded .glitch__img:nth-child(n+2) {
+.glitch .glitch-image:nth-child(n+2) {
     animation-duration: var(--time-anim);
     animation-delay: var(--delay-anim);
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
 
-.imgloaded .glitch__img:nth-child(2) {
+.glitch .glitch-image:nth-child(2) {
     background-color: var(--blend-color-2);
     background-blend-mode: var(--blend-mode-2);
     animation-name: glitch-anim-1;
 }
 
-.imgloaded .glitch__img:nth-child(3) {
+.glitch .glitch-image:nth-child(3) {
     background-color: var(--blend-color-3);
     background-blend-mode: var(--blend-mode-3);
     animation-name: glitch-anim-2;
 }
 
-.imgloaded .glitch__img:nth-child(4) {
+.glitch .glitch-image:nth-child(4) {
     background-color: var(--blend-color-4);
     background-blend-mode: var(--blend-mode-4);
     animation-name: glitch-anim-3;
 }
 
-.imgloaded .glitch__img:nth-child(5) {
+.glitch .glitch-image:nth-child(5) {
     background-color: var(--blend-color-5);
     background-blend-mode: var(--blend-mode-5);
     animation-name: glitch-anim-flash;
 }
 
 /* Animations */
-
 @keyframes glitch-anim-1 {
     0% {
         opacity: 1;
@@ -691,50 +693,6 @@ li {
         transform: translate3d(0,0,0);
         -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0);
         clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-    }
-}
-
-@keyframes glitch-anim-text {
-    0% {
-        transform: translate3d(calc(-1 * var(--gap-horizontal)),0,0) scale3d(-1,-1,1);
-        -webkit-clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
-        clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
-    }
-    2% {
-        -webkit-clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
-        clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
-    }
-    4% {
-        -webkit-clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
-        clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
-    }
-    5% {
-        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
-        clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
-    }
-    6% {
-        -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
-        clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
-    }
-    7% {
-        -webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-        clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-    }
-    8% {
-        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
-        clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
-    }
-    9% {
-        -webkit-clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
-        clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
-    }
-    9.9% {
-        transform: translate3d(calc(-1 * var(--gap-horizontal)),0,0) scale3d(-1,-1,1);
-    }
-    10%, 100% {
-        transform: translate3d(0,0,0) scale3d(1,1,1);
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     }
 }
 
