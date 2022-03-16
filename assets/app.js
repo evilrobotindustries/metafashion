@@ -14,6 +14,7 @@ const images = [
 
 document.addEventListener('DOMContentLoaded', () => {
     // Check if there are any navbar burgers
+    const nav = document.getElementsByTagName("nav")[0];
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
     if ($navbarBurgers.length > 0) {
         // Add a click event on each of them
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             burger.addEventListener('click', () => {
                 // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                nav.classList.toggle('is-active');
                 burger.classList.toggle('is-active');
                 $target.classList.toggle('is-active');
             });
@@ -43,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set menu items as active as user scrolls through sections
     const sections = document.querySelectorAll("section");
-    const nav = document.getElementsByTagName("nav")[0];
     const navbarItems = document.querySelectorAll(".navbar-item");
     const offset = 70;
     window.onscroll = () => {
@@ -76,10 +77,6 @@ function delay(ms){
     })
 }
 
-function random(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-}
-
 async function init() {
     // Cache assets
     const total = images.length + 1;
@@ -106,6 +103,7 @@ async function init() {
     document.getElementById('hero-image').classList.add('glitch'); // Glitch effect
     document.getElementById('site').style.display = 'initial';
     bulmaCollapsible.attach('.is-collapsible');
+    document.getElementById('phase1').style.removeProperty('height');
 
     // Functions to open and close a modal
     function openModal($el) {
@@ -114,7 +112,6 @@ async function init() {
     function closeModal($el) {
         $el.classList.remove('is-active');
     }
-
     function closeAllModals() {
         (document.querySelectorAll('.modal') || []).forEach(($modal) => {
             closeModal($modal);
