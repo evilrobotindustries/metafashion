@@ -1,5 +1,27 @@
 import bulmaCollapsible from '@creativebulma/bulma-collapsible';
 
+import vip from './vip';
+async function main () {
+    await vip.start();
+
+    const address = 'd8as79dsasd987asasd987as';
+    const cid = await vip.register(address);
+
+    if (await vip.check(address))
+        console.info('You are on the VIP list!');
+    else
+        console.warn('Your address was not found on the VIP list.');
+
+    const entries = await vip.entries();
+    console.log(`VIP List Entries: ${entries.length}`);
+    for (let value of entries) {
+        console.log(`Address ${value.address} VIP-listed.`);
+    }
+}
+
+main()
+
+
 const font = new FontFace("Druk Wide Medium",
     "url(\"/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2\") format(\"woff2\")");
 const images = [
