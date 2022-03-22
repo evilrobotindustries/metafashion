@@ -526,11 +526,37 @@
                     <section class="section" >
                         <h1 class="title">VIP Signup</h1>
                         <div class="block">
-                            <p>> Connect your wallet to add your address to the MetaFashion VIP list</p>
-                            <p>> Sign the message so that only MetaFashion HQ can decrypt it</p>
+                            <p>Welcome to the MetaFashion VIP Signup process</p>
                         </div>
                         <div class="block">
-                            <a class="button modal-button vip" data-target="vip">Connect Wallet</a>
+                            <span id="vip-status"></span>
+                        </div>
+<!--                        <div class="block">-->
+<!--                            <p>> Connect your wallet to add your address to the MetaFashion VIP list</p>-->
+<!--                            <p>> Sign the message so that only MetaFashion HQ can decrypt it</p>-->
+<!--                        </div>-->
+                        <div class="columns">
+                            <div class="column">
+                                <button id="vip-signup" class="button modal-button vip" data-target="vip" disabled>Signup</button>
+                            </div>
+                            <div class="column">
+                                <button id="vip-check" class="button modal-button vip" data-target="vip" disabled>Check</button>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <span id="vip-signup-status"></span>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <p>
+                                    Entries:<span id="vip-total">0</span>
+                                </p>
+                            </div>
+                            <div class="column">
+                                <p>
+                                    Peers:<span id="vip-peers-db">0</span> / <span id="vip-peers-network">0</span> network
+                                </p>
+                            </div>
                         </div>
                     </section>
                 </div>

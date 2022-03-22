@@ -19,9 +19,9 @@
     "snowpack": "^3.8.8"
   },
   "scripts": {
-    "build:ipfs": "esbuild ./node_modules/ipfs-core --bundle --format=esm --main-fields=browser,module,main --inject:./node-globals.js --define:process.env.NODE_ENV='\"production\"' --outfile=./assets/ipfs-core.js",
-    "build:orbitdb": "esbuild ./node_modules/orbit-db --bundle --format=esm --main-fields=browser,module,main --inject:./node-globals.js --define:process.env.NODE_ENV='\"production\"' --outfile=./assets/orbit-db.js",
-    "start": "snowpack dev",
+    "build:ipfs": "esbuild ./node_modules/ipfs-core --bundle --minify --format=esm --main-fields=browser,module,main --inject:./node-globals.js --define:process.env.NODE_ENV='\"production\"' --outfile=./assets/ipfs-core.js",
+    "build:orbitdb": "esbuild ./node_modules/orbit-db --bundle --minify --format=esm --main-fields=browser,module,main --inject:./node-globals.js --define:process.env.NODE_ENV='\"production\"' --outfile=./assets/orbit-db.js",
+    "start": "snowpack dev --secure",
     "build": "snowpack build"
   }
 }

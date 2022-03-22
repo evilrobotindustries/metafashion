@@ -1,25 +1,133 @@
 import bulmaCollapsible from '@creativebulma/bulma-collapsible';
 
-import vip from './vip';
+import { default as vip, Events } from './vip';
+const databaseAddress = "/orbitdb/zdpuAoCUkoLBRLp3HNFzCRrULZVgBVkqiRYmfLAuZXEmfD1Tg/ZZhzpRwVEP";
+
+function randomAddress(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
+}
+
+const check = document.getElementById('vip-check');
+const dbPeers = document.getElementById('vip-peers-db');
+const networkPeers = document.getElementById('vip-peers-network');
+const progress = document.getElementById('vip-progress');
+const signup = document.getElementById('vip-signup');
+const signupStatus = document.getElementById('vip-signup-status');
+const status = document.getElementById('vip-status');
+const total = document.getElementById('vip-total');
+const userAddress = randomAddress(20);
+
 async function main () {
-    await vip.start();
 
-    const address = 'd8as79dsasd987asasd987as';
-    const cid = await vip.register(address);
+    vip.debug();
 
-    if (await vip.check(address))
-        console.info('You are on the VIP list!');
-    else
-        console.warn('Your address was not found on the VIP list.');
+    // Add event listeners
+    vip.addEventListener(Events.NetworkPeersChanged, () => {
+        networkPeers.innerText = vip.peers.network.toString();
+    });
 
-    const entries = await vip.entries();
-    console.log(`VIP List Entries: ${entries.length}`);
-    for (let value of entries) {
-        console.log(`Address ${value.address} VIP-listed.`);
+    vip.addEventListener(Events.Connected, () => {
+        dbPeers.innerText = vip.peers.database.toString();
+        status.classList.remove('blink');
+        setStatus("> Connected - Signup now available");
+        signup.disabled = false;
+        check.disabled = false;
+    });
+    vip.addEventListener(Events.Disconnected, () => {
+        status.classList.add('blink');
+        setStatus("> No peers currently available - waiting until one becomes available...");
+        signup.disabled = true;
+        check.disabled = true;
+    });
+    vip.addEventListener(Events.ReplicationProgress, () => {
+        setStatus("> Synchronising VIP list...");
+    });
+    vip.addEventListener(Events.Replicated, () => {
+        console.log("Remote entries synchronised.");
+    });
+    vip.addEventListener(Events.TotalChanged, () => {
+        total.innerText = vip.total;
+    });
+    signup.addEventListener('click', async () => {
+        await vip.register(userAddress);
+        total.innerText = vip.total;
+
+        setStatus("> Connected to MetaFashion HQ");
+
+        signupStatus.classList.remove('has-text-success', 'has-text-danger');
+        if (await vip.check(userAddress)) {
+            signupStatus.classList.add('has-text-success');
+            signupStatus.innerText = '> You have successfully signed up - welcome to the MetaFashion VIP list!';
+        }
+        else {
+            signupStatus.classList.add('has-text-danger');
+            signupStatus.innerText = '> Your address was not found on the VIP list';
+        }
+
+        signup.disabled = true;
+    });
+    check.addEventListener('click', async () => {
+        signupStatus.classList.remove('has-text-success', 'has-text-danger');
+        if (await vip.check(userAddress)) {
+            signupStatus.innerText = '> You have successfully signed up - welcome to the MetaFashion VIP list!';
+            signupStatus.classList.add('has-text-success');
+        }
+        else {
+            signupStatus.classList.add('has-text-danger');
+            signupStatus.innerText = '> Your address was not found on the VIP list';
+        }
+
+        check.disabled = true;
+    });
+
+
+
+    const setStatus = (message) => {
+        console.info(message);
+        status.innerText = message;
+    };
+
+    // Detect Safari
+    let chromeAgent = navigator.userAgent.indexOf("Chrome") > -1;
+    let safariAgent = navigator.userAgent.indexOf("Safari") > -1;
+    if ((chromeAgent) && (safariAgent)) safariAgent = false;
+
+    try {
+        status.classList.add('blink');
+        setStatus("> Connecting to network");
+        await vip.init();
+    }
+    catch (err)
+    {
+        status.classList.remove('blink');
+        console.error(err);
+        status.classList.add('has-text-danger');
+        setStatus(`> Could not connect to network - ${err.message}`);
+        return;
+    }
+
+    try {
+        setStatus("> Contacting MetaFashion HQ");
+        await vip.connect(databaseAddress);
+    }
+    catch (err)
+    {
+        status.classList.remove('blink');
+        console.error(err);
+        status.classList.add('has-text-danger');
+        setStatus(`> Could not contact MetaFashion HQ - ${err.message}`);
     }
 }
 
 main()
+
 
 
 const font = new FontFace("Druk Wide Medium",
