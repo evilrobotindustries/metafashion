@@ -1,248 +1,143 @@
-import IPFS from './ipfs-core';
-import OrbitDB from './orbit-db';
+const wsUri = "ws://127.0.0.1:8000/ws"
+const api_key = "hnbh9WEllWzFzVviUClOGQ=="
 
-export class Events {
-    static Ready = 'ready'; // Emitted after fully loading the local database.
-    static Replicate = 'replicate'; // Emitted before replicating a part of the database with a peer.
-    static ReplicationProgress = 'replicationProgress';
-    static Replicated = 'replicated'; // Emitted when the database has synced with another peer.
-    static Loading = 'load'; // Emitted before loading the database.
-    static LoadingProgress = 'load.progress'; // Emitted while loading the local database, once for each entry.
-    static Write = 'write' // Emitted after an entry was added locally to the database.
-    static PeerConnected = 'peer'; // Emitted when a new peer connects via ipfs pubsub.
-    static PeerExchanged = 'peer.exchanged'; // Emitted after heads have been exchanged with a peer for a specific database.
-    static Closed = 'closed'; // Emitted once the database has finished closing.
+const vipList = document.getElementById('vip-list');
+const check = document.getElementById('vip-check');
+const peers = document.getElementById('vip-peers');
+const progress = document.getElementById('vip-progress');
+const signup = document.getElementById('vip-signup');
+const add = document.getElementById('vip-add');
+const signupStatus = document.getElementById('vip-signup-status');
+const status = document.getElementById('vip-status');
+const total = document.getElementById('vip-total');
+const userAddress = randomAddress(20);
 
-    static Connected = 'connected';
-    static Disconnected = 'disconnected';
-    static NetworkPeersChanged = 'networkPeersChanged';
-    static TotalChanged = 'totalChanged';
-}
+let conn = null;
+let connected = false;
 
-class VIP extends EventTarget {
-    peers = new Peers();
+vipList.addEventListener('click', async () => {
+    await connect();
+});
 
-    async createDatabase(name)
-    {
-        // Create OrbitDB database
-        console.debug('OrbitDB: Creating database...');
-        const options = { accessController: { write: ['*'] } }
-        this.database = await this.orbitDB.create(name, 'eventlog', options);
-        console.debug(`OrbitDB: Database ${this.database.id} created.`);
-    }
+const connect = async () => {
+    if (conn == null) {
+        console.debug("api: connecting...");
+        status.classList.remove('has-text-danger', 'has-text-success');
+        status.classList.add('blink');
+        status.innerText = "> Connecting to MetaFashion HQ";
+        await delay(2000);
 
-    debug()
-    {
-        window.LOG='orbit*';
-    }
+        conn = new WebSocket(wsUri);
 
-    async openDatabase(address)
-    {
-        // Open database
-        this.database = await this.orbitDB.open(address, { sync: true });
+        conn.onopen = async () => {
+            connected = true;
+            console.debug("api: connected");
+            conn.send(api_key);
+            console.debug("api: ready");
 
-        // Add event listeners
-        this.database.events.on(Events.Replicated, async (address) => {
-            console.debug(Events.Replicated, address);
-            //this.dispatchEvent(new Event(Events.Replicated));
-            //await this.database.load();
-            await this.refresh();
-        });
-        this.database.events.on(Events.Replicate, async (address) => {
-            console.debug(Events.Replicate, address);
+            status.classList.remove('blink', 'has-text-danger');
+            status.classList.add('has-text-success');
+            status.innerText = "Connected"
 
-            this.dispatchEvent(new Event(Events.Replicate));
-        });
-        this.database.events.on(Events.ReplicationProgress, async (address, hash, entry, progress, have) => {
-            console.debug(Events.ReplicationProgress, address, hash, entry, progress, have);
-            await this.refresh()
-        });
-        this.database.events.on(Events.Loading, async (dbname) => {
-            console.debug(Events.Loading, dbname);
-            this.total = 0;
-            this.dispatchEvent(new Event(Events.Loading));
-        });
-        this.database.events.on(Events.LoadingProgress, async (address, hash, entry, progress, total) => {
-            console.debug(Events.LoadingProgress, address, hash, entry, progress, total);
-            // this.progress = progress / total;
-            // this.total = total;
-            this.dispatchEvent(new Event(Events.LoadingProgress))
-        });
-        this.database.events.on(Events.Ready, async (dbname, heads) => {
-            console.debug(Events.Ready, dbname, heads);
-            this.dispatchEvent(new Event(Events.Ready));
-            await this.refresh();
-        });
-        this.database.events.on(Events.Write, async (address, entry, heads) => {
-            console.debug(Events.Write, address, entry, heads);
-            await this.refresh()
-        });
-        this.database.events.on(Events.Closed, async (dbname) => {
-            console.debug(Events.Closed, dbname);
-            await this.refresh()
-        });
-        this.database.events.on(Events.PeerConnected, async (peer) => {
-            console.debug(Events.Write, peer);
-
-            await this.refresh();
-
-            if (this.peers.database >= 0)
-                this.dispatchEvent(new Event(Events.Connected));
-            else
-                this.dispatchEvent(new Event(Events.Disconnected));
-        });
-        this.database.events.on(Events.PeerExchanged, async (peer, address, heads)=> {
-            console.debug(Events.PeerExchanged, peer, address, heads);
-
-            await this.refresh();
-
-            if (this.peers.database >= 0)
-                this.dispatchEvent(new Event(Events.Connected));
-            else
-                this.dispatchEvent(new Event(Events.Disconnected));
-        });
-    }
-
-    async init() {
-        // Create IPFS node
-        console.debug('IPFS: Creating node in browser...');
-        this.ipfsNode = await IPFS.create({
-            config: {
-                Addresses: {
-                    Swarm: [
-                        '/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
-                        '/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
-                        //'/dns4/webrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star/',
-                    ]
-                },
-            },
-            preload: {
-                enabled: false
-            },
-            relay: { enabled: true, hop: { enabled: true, active: true } },
-            start: true,
-        });
-
-        // console.debug(this.ipfsNode);
-        console.debug(`IPFS: Started.`);
-        const identity = await this.ipfsNode.id();
-        console.debug(`IPFS: Node ${identity.id} created.`);
-        console.log(identity.addresses);
-
-       // await
-       // this.ipfsNode.swarm.connect('/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star/p2p/12D3KooWNvnTi5tssk7TcqsnoNe6ktBgWuNkNu4PRrDdi39Gc7zm')
-
-        // for await (const res of this.ipfsNode.ping('12D3KooWC22HxaR4kcf3TraNJuVCJxJ6QjNoUWLLiNuYwP2xaBN6')) {
-        //     if (res.time) {
-        //         console.log(`Pong received: time=${res.time} ms`)
-        //     } else {
-        //         console.log(res.text)
-        //     }
-        // }
-
-        // let bootstrapAddresses = await this.ipfsNode.bootstrap.list()
-        // console.log(bootstrapAddresses.Peers)
-        //
-        // const swarmPeers = await this.ipfsNode.swarm.peers()
-        // console.log(swarmPeers)
-
-        await this.refresh();
-
-        // Create OrbitDB instance
-        console.debug('OrbitDB: Creating instance...');
-        this.orbitDB = await OrbitDB.createInstance(this.ipfsNode)
-        console.debug(`OrbitDB: Instance ${this.orbitDB.identity.id} created.`);
-        //console.log(this.orbitDB);
-    }
-
-    async connect(databaseAddress) {
-        console.debug(`Opening database ${databaseAddress}...`);
-        await this.openDatabase(databaseAddress);
-
-        // Load existing database content into memory
-        console.debug(`Loading database ${databaseAddress} content...`);
-        await this.database.load();
-    }
-
-    log(message){
-        console.log(`MFHQ: ${message}`);
-    }
-
-    async register(address) {
-
-        this.log(`Adding address ${address} to VIP list...`);
-
-        if (await this.check(address)) {
-            this.log(`Address ${address} already added.`);
-            return;
+            // Show signup
+            add.disabled = false;
+            check.disabled = false;
+            signup.classList.remove('is-hidden');
+        };
+        conn.onerror = async e => {
+            status.classList.remove('blink');
+            status.classList.add('has-text-danger');
+            status.innerText = `Connection failed - please try again`;
         }
+        conn.onmessage = e => {
+            const message = JSON.parse(e.data);
+            console.debug('api:', message.type)
+            switch (message.type) {
+                case 'peer-joined':
+                case 'peer-left': {
+                    peers.innerText = message.total
+                    return
+                }
+                case 'registered': {
+                    total.innerText = message.total
+                    console.log(message.address)
 
-        console.debug(`OrbitDB: Adding ${address} to database...`);
-        let cid = await this.database.add({ address: address });
-        console.debug(`OrbitDB: ${address} added to database with cid of ${cid}`);
+                    if (message.address !== undefined && message.address != null) {
+                        signupStatus.classList.remove('blink', 'has-text-success', 'has-text-danger');
+                        if (message.address) {
+                            signupStatus.classList.add('has-text-success');
+                            signupStatus.innerText = '> Your address was successfully added to the VIP list';
+                            add.disabled = true;
+                            check.disabled = true;
+                        } else {
+                            signupStatus.classList.add('has-text-danger');
+                            signupStatus.innerText = '> Your address was not found on the VIP list';
+                        }
+                    }
 
-        this.log(`Address ${address} added to VIP list.`);
-
-        this.total += 1;
-        return cid;
-    };
-
-    async check(address)
-    {
-        for (let e of this.database.iterator({ limit: -1 }))
-            if (e.payload.value.address === address)
-                return true;
-
-        return false;
-    }
-
-    // async entries()
-    // {
-    //     return this.database.iterator({ limit: -1 }).collect().map((e) => e.payload.value);
-    // }
-
-    // async networkPeers() {
-    //     return await this.ipfsNode.swarm.peers();
-    // }
-    //
-    // async databasePeers() {
-    //     return await this.ipfsNode.pubsub.peers(this.database.address.toString());
-    // }
-
-    async refresh(){
-        // Refresh network peers
-        let peers = await this.ipfsNode.swarm.peers();
-        if (peers.length !== this.peers.network)
-        {
-            this.peers.network = peers.length;
-            this.dispatchEvent(new Event(Events.NetworkPeersChanged));
-        }
-
-        if (this.database !== undefined && this.database.address !== undefined){
-
-            // Refresh database peers
-            peers = await this.ipfsNode.pubsub.peers(this.database.address.toString());
-            if (peers.length !== this.peers.database)
-            {
-                this.peers.database = peers.length;
-                this.dispatchEvent(new Event(Events.PeerConnected));
+                    return
+                }
             }
+        };
+        conn.onclose = async () => {
+            if (!connected) return;
 
-            // Refresh total
-            console.debug(this.database._replicationStatus.progress, this.database._oplog.length);
-            const total = Math.max(this.database._replicationStatus.progress, this.database._oplog.length);
-            if (total !== this.total)
-            {
-                this.total = total;
-                this.dispatchEvent(new Event(Events.TotalChanged));
-            }
-        }
+            console.log("api: disconnected");
+            conn = null;
+
+            add.disabled = true;
+            check.disabled = true;
+
+            status.classList.add('blink', 'has-text-danger');
+            status.innerText = "> Disconnected - retrying"
+            await delay(30_000)
+            connect()
+        };
     }
 }
 
-class Peers {
-    database = 0;
-    network = 0;
+add.addEventListener('click', async () => {
+    add.disabled = true;
+    try {
+        signupStatus.classList.remove('has-text-success', 'has-text-danger');
+        signupStatus.classList.add('blink');
+        signupStatus.innerText = "> Adding your address to the VIP list";
+        await delay(2000);
+        conn.send(JSON.stringify({type: "register", address: userAddress}));
+    }
+    catch (e) {
+        add.disabled = false;
+    }
+});
+check.addEventListener('click', async () => {
+    check.disabled = true;
+    try {
+        signupStatus.classList.remove('has-text-success', 'has-text-danger');
+        signupStatus.classList.add('blink');
+        signupStatus.innerText = "> Checking address signup status";
+        await delay(2000);
+        conn.send(JSON.stringify({type: "check", address: userAddress}));
+    }
+    catch (e){
+        check.disabled = false;
+    }
+});
+
+connect();
+
+function delay(ms){
+    return new Promise(resolve => {
+        setTimeout(resolve,ms);
+    })
 }
 
-export default new VIP()
+function randomAddress(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
+}

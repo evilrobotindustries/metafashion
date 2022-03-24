@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/assets/style.css" />
     <link rel="preload" href="/assets/fonts/Jura-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <script src="/assets/app.js" type="module" defer></script>
+    <script src="/assets/vip.js" type="module" defer></script>
 </head>
 <body>
     <!--Landing-->
@@ -76,7 +77,7 @@
                     </div>
                     <div class="navbar-item is-spacer">|</div>
                     <div class="navbar-item">
-                        <a class="button modal-button vip" data-target="vip">VIP List</a>
+                        <a id="vip-list" class="button modal-button vip" data-target="vip">VIP List</a>
                     </div>
                 </div>
             </div>
@@ -525,36 +526,38 @@
                 <div class="container">
                     <section class="section" >
                         <h1 class="title">VIP Signup</h1>
-                        <div class="block">
-                            <p>Welcome to the MetaFashion VIP Signup process</p>
-                        </div>
-                        <div class="block">
-                            <span id="vip-status"></span>
-                        </div>
-<!--                        <div class="block">-->
-<!--                            <p>> Connect your wallet to add your address to the MetaFashion VIP list</p>-->
-<!--                            <p>> Sign the message so that only MetaFashion HQ can decrypt it</p>-->
-<!--                        </div>-->
-                        <div class="columns">
-                            <div class="column">
-                                <button id="vip-signup" class="button modal-button vip" data-target="vip" disabled>Signup</button>
+                        <div id="vip-signup" class="container block is-hidden">
+                            <div class="block">
+                                <p>Welcome to the MetaFashion VIP signup</p>
                             </div>
-                            <div class="column">
-                                <button id="vip-check" class="button modal-button vip" data-target="vip" disabled>Check</button>
+                            <div class="block">
+                                <p>> Connect your wallet to add your address to the MetaFashion VIP list</p>
+                                <p>> Sign the message so that only MetaFashion HQ can decrypt it</p>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <button id="vip-add" class="button vip" disabled>Signup</button>
+                                </div>
+                                <div class="column">
+                                    <button id="vip-check" class="button vip" disabled>Check</button>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <span id="vip-signup-status"></span>
                             </div>
                         </div>
                         <div class="block">
-                            <span id="vip-signup-status"></span>
+                            Status: <span id="vip-status"></span>
                         </div>
                         <div class="columns">
                             <div class="column">
                                 <p>
-                                    Entries:<span id="vip-total">0</span>
+                                    Entries: <span id="vip-total">0</span>
                                 </p>
                             </div>
                             <div class="column">
                                 <p>
-                                    Peers:<span id="vip-peers-db">0</span> / <span id="vip-peers-network">0</span> network
+                                    Peers: <span id="vip-peers">0</span>
                                 </p>
                             </div>
                         </div>

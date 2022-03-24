@@ -251,9 +251,19 @@ html {
     border: var(--foreground) 1px solid;
     margin: 40px;
 }
-
-#site #vip-total, #site #vip-peers-db, #vip-peers-network {
+#site #vip-total, #site #vip-peers {
     font-family: "Druk Wide Medium";
+}
+#site #vip-signup.is-hidden {
+    display: unset !important;
+    height: 0;
+    overflow: hidden;
+    max-height: 0;
+    visibility: hidden;
+}
+#site #vip-signup.is-hidden .block, #site #vip-signup.is-hidden .columns {
+    height: 0;
+    margin-bottom: 0;
 }
 .blink {
     animation: blinker 1.5s linear infinite;
