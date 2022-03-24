@@ -1,5 +1,5 @@
-const wsUri = "ws://127.0.0.1:8000/ws"
-const api_key = "hnbh9WEllWzFzVviUClOGQ=="
+const wsUri = "wss://metafashion-hq-api.onrender.com/ws"
+const api_key = "9d5035b611b1dc600a762bf264a6ff19"
 
 const vipList = document.getElementById('vip-list');
 const check = document.getElementById('vip-check');
