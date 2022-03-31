@@ -1,5 +1,3 @@
-import bulmaCollapsible from '@creativebulma/bulma-collapsible';
-
 const font = new FontFace("Druk Wide Medium",
     "url(\"/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2\") format(\"woff2\")");
 const images = [
@@ -98,11 +96,8 @@ async function init() {
     }
 
     // Hide loading page and show site
-    document.getElementById('landing').style.display = 'none';
     document.getElementsByTagName('html')[0].classList.add('has-navbar-fixed-top');
     document.getElementById('hero-image').classList.add('glitch'); // Glitch effect
-    document.getElementById('site').style.display = 'initial';
-    bulmaCollapsible.attach('.is-collapsible');
     document.getElementById('phase1').style.removeProperty('height');
 
     // Functions to open and close a modal
