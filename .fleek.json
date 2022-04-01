@@ -1,7 +1,7 @@
 {
   "build": {
     "image": "evilrobotindustries/wasm",
-    "command": "apt-get install -y --no-install-recommends npm && npm install && npm run build:bulmaCollapsible && npm run fix:bulmaCollapsible && trunk build",
+    "command": "trunk build",
     "publicDir": "dist"
   }
 }
