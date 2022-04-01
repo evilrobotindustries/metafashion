@@ -1,7 +1,7 @@
-use yew::{function_component, html, Html};
+use yew::{function_component, html};
 
 #[function_component(Loading)]
-pub fn loading() -> Html {
+pub fn loading() -> yew::Html {
     html! {
         <section id="landing" class="hero is-fullheight">
             <section class="hero is-fullheight">
@@ -13,7 +13,7 @@ pub fn loading() -> Html {
                         <div id="loading" class="container has-text-centered">
                             <div class="loading block">{"Loading"}</div>
                             <div class="progress-bar">
-                                <div class="value"></div>
+                                <div id="progress-bar-value" class="value"></div>
                             </div>
                             <div id="status" class="block">{"1%"}</div>
                         </div>

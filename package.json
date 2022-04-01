@@ -1,19 +1,12 @@
 {
-  "dependencies": {
-    "bulma-timeline": "^3.0.5"
-  },
   "devDependencies": {
     "bulma": "^0.9.3",
+    "bulma-timeline": "^3.0.5",
     "@creativebulma/bulma-collapsible": "^1.0.4",
-    "@internetarchive/snowpack-files-hash": "^1.0.1",
     "esbuild": "^0.14.29",
-    "replace-in-file": "^6.3.2",
-    "snowpack": "^3.8.8"
+    "replace-in-file": "^6.3.2"
   },
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build",
-
     "build:bulmaCollapsible": "esbuild ./node_modules/@creativebulma/bulma-collapsible --bundle --minify --format=esm --main-fields=browser,module,main --outfile=./assets/bulma-collapsible.min.js",
     "fix:bulmaCollapsible": "replace-in-file 'this._collapsed||(this.element.style.height=this._originalHeight)' '' ./assets/bulma-collapsible.min.js"
   }
