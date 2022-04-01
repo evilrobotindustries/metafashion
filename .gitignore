@@ -1,5 +1,7 @@
 .idea
+assets/bulma-collapsible.min.js
 build/
 dist/
 node_modules/
 target/
+

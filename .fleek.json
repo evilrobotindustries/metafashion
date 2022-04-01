@@ -1,7 +1,7 @@
 {
   "build": {
     "image": "node:slim",
-    "command": "npm install && npm run build && rm build/node_modules -rf",
-    "publicDir": "build"
+    "command": "npm install && npm run build:bulmaCollapsible && npm run fix:bulmaCollapsible && trunk build",
+    "publicDir": "dist"
   }
 }
