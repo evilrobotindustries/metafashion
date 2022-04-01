@@ -1,6 +1,6 @@
 {
   "build": {
-    "image": "node:slim",
+    "image": "evilrobotindustries/wasm",
     "command": "npm install && npm run build:bulmaCollapsible && npm run fix:bulmaCollapsible && trunk build",
     "publicDir": "dist"
   }
