@@ -1,7 +1,7 @@
 {
   "build": {
-    "image": "node:slim",
-    "command": "npm install && npm run build && rm build/node_modules -rf && sed -i 's/star.svg/star.dd3da8d19e80.svg/g' build/assets/style.*.css && sed -i 's/header.jpg/header.b24e1170038d.jpg/g' build/assets/style.*.css",
-    "publicDir": "build"
+    "image": "evilrobotindustries/wasm",
+    "command": "trunk build --release=true",
+    "publicDir": "dist"
   }
 }

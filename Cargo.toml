@@ -1,0 +1,50 @@
+[package]
+name = "metafashion"
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+# less code to include into binary
+panic = 'abort'
+# optimization over all codebase ( better optimization, slower build )
+codegen-units = 1
+# optimization for size ( more aggressive )
+opt-level = 'z'
+# optimization for size
+# opt-level = 's'
+# link time optimization using using whole-program analysis
+lto = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = { version = "0.4.19", features = ["serde"] }
+gloo-console = "0.2.1"
+gloo-timers = { version = "0.2.3", features = ["futures"] }
+js-sys = "0.3.56"
+obfstr = "0.3.0"
+serde = { version = "1.0.136", features = ["derive"] }
+serde_json = "1.0.79"
+wasm-bindgen = "0.2.79"
+web-sys = { version = "0.3.56", features = [
+    "CssStyleDeclaration",
+    "Document",
+    "DomTokenList",
+    "Element",
+    "ErrorEvent",
+    "FontFace",
+    "HtmlAnchorElement",
+    "HtmlCollection",
+    "HtmlElement",
+    "HtmlImageElement",
+    "KeyboardEvent",
+    "MessageEvent",
+    "NodeList",
+    "WebSocket"
+] }
+wee_alloc = "0.4.5"
+yew = "0.19.3"
+
+# todo: Temporary random string generation
+getrandom = { version = "0.2.6", features = ["js"] }
+nanoid = { version = "0.4.0" }

@@ -1,15 +1,20 @@
 {
-  "dependencies": {
+  "devDependencies": {
     "@creativebulma/bulma-collapsible": "^1.0.4",
     "bulma": "^0.9.3",
-    "bulma-timeline": "^3.0.5"
-  },
-  "devDependencies": {
-    "@internetarchive/snowpack-files-hash": "^1.0.1",
-    "snowpack": "^3.8.8"
+    "bulma-timeline": "^3.0.5",
+    "copyfiles": "^2.4.1",
+    "esbuild": "^0.14.29",
+    "replace-in-file": "^6.3.2"
   },
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build"
+    "bulma": "copyfiles -f ./node_modules/bulma/css/bulma.min.css assets",
+    "prebulma-collapsible": "copyfiles -f ./node_modules/@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css assets",
+    "bulma-collapsible": "esbuild ./node_modules/@creativebulma/bulma-collapsible --bundle --minify --format=esm --main-fields=browser,module,main --outfile=./assets/bulma-collapsible.min.js",
+    "postbulma-collapsible": "replace-in-file 'this._collapsed||(this.element.style.height=this._originalHeight)' '' ./assets/bulma-collapsible.min.js",
+    "bulma-timeline": "copyfiles -f ./node_modules/bulma-timeline/dist/css/bulma-timeline.min.css assets",
+    "presetup": "npm run bulma",
+    "setup": "npm run bulma-collapsible",
+    "postsetup": "npm run bulma-timeline"
   }
 }

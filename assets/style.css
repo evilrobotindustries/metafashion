@@ -1,8 +1,3 @@
-@import "/node_modules/bulma/css/bulma.min.css";
-@import "/node_modules/@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css";
-@import "/node_modules/bulma-timeline/dist/css/bulma-timeline.min.css";
-@import "./glitch.css";
-
 :root {
     --background: black;
     --foreground: white;
@@ -15,22 +10,22 @@
 
 @font-face {
     font-family: "Druk Wide Medium";
-    src: url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot");
+    src: url("/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot");
     src:
-        /*url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot?#iefix") format("embedded-opentype"),*/
-            url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2") format("woff2"),
-            url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff") format("woff"),
-            url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.ttf") format("truetype"),
-            url("/assets/fonts/7e389c5e310dc537b083e0e25ea6eab5.svg") format("svg");
+        /*url("/fonts/7e389c5e310dc537b083e0e25ea6eab5.eot?#iefix") format("embedded-opentype"),*/
+            url("/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff2") format("woff2"),
+            url("/fonts/7e389c5e310dc537b083e0e25ea6eab5.woff") format("woff"),
+            url("/fonts/7e389c5e310dc537b083e0e25ea6eab5.ttf") format("truetype"),
+            url("/fonts/7e389c5e310dc537b083e0e25ea6eab5.svg") format("svg");
 }
 @font-face{
     font-family: "Jura-Regular";
-    src: url("/assets/fonts/Jura-Regular.eot");
+    src: url("/fonts/Jura-Regular.eot");
     src:
-        /*url("/assets/fonts/Jura-Regular.eot?#iefix") format("embedded-opentype"),*/
-            url("/assets/fonts/Jura-Regular.woff2")format("woff2"),
-            url("/assets/fonts/Jura-Regular.woff")format("woff"),
-            url("/assets/fonts/Jura-Regular.ttf")format("truetype");
+        /*url("/fonts/Jura-Regular.eot?#iefix") format("embedded-opentype"),*/
+            url("/fonts/Jura-Regular.woff2")format("woff2"),
+            url("/fonts/Jura-Regular.woff")format("woff"),
+            url("/fonts/Jura-Regular.ttf")format("truetype");
     font-weight:normal;
     font-style:normal;
     font-display:swap;
@@ -184,15 +179,15 @@ html {
 .navbar-menu a {
     color: var(--foreground);
 }
-a.button.vip  {
-    background-color: var(--accent);
+.button.vip  {
+    background-color: var(--accent) !important;
     border-color: var(--accent);
     border-radius: 4px;
     color: var(--foreground);
     font-family: "Druk Wide Medium", sans-serif;
     text-transform: uppercase;
 }
-a.button.vip:hover {
+.button.vip:hover {
     box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
     color: var(--foreground);
 }
@@ -206,9 +201,6 @@ a.button.vip:hover {
 }
 
 /*Site*/
-#site {
-    display: none;
-}
 #site .arrow {
     animation: hover 3s infinite ease-in-out;
 }
@@ -244,11 +236,34 @@ a.button.vip:hover {
 }
 #site #vip .modal-content {
     width: auto;
+    text-transform: uppercase;
+    max-height: calc(100vh - 100px);
 }
 #site #vip .container .section {
     background-color: #000000;
     border: var(--foreground) 1px solid;
-    margin: 40px;
+}
+#site #vip-total, #site #vip-peers {
+    font-family: "Druk Wide Medium";
+}
+#site #vip-signup.is-hidden {
+    display: unset !important;
+    height: 0;
+    overflow: hidden;
+    max-height: 0;
+    visibility: hidden;
+}
+#site #vip-signup.is-hidden .block, #site #vip-signup.is-hidden .columns {
+    height: 0;
+    margin-bottom: 0;
+}
+.blink {
+    animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }
 
 .subtitle {
@@ -349,7 +364,7 @@ a.button.vip:hover {
 }
 
 ul {
-    list-style-image: url('/assets/star.svg');
+    list-style-image: url('/images/star.svg');
     padding-left: 1em;
 }
 li {
