@@ -1,20 +1,27 @@
 {
-  "devDependencies": {
+  "browser": {
+    "path": "path-browserify",
+    "stream": "stream-browserify"
+  },
+  "dependencies": {
     "@creativebulma/bulma-collapsible": "^1.0.4",
     "bulma": "^0.9.3",
     "bulma-timeline": "^3.0.5",
-    "copyfiles": "^2.4.1",
-    "esbuild": "^0.14.29",
-    "replace-in-file": "^6.3.2"
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0"
+  },
+  "devDependencies": {
+    "@internetarchive/snowpack-files-hash": "^1.0.1",
+    "esbuild": "^0.14.27",
+    "ipfs-core": "^0.14.1",
+    "orbit-db": "^0.28.3",
+    "snowpack": "^3.8.8"
   },
   "scripts": {
-    "bulma": "copyfiles -f ./node_modules/bulma/css/bulma.min.css assets",
-    "prebulma-collapsible": "copyfiles -f ./node_modules/@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css assets",
-    "bulma-collapsible": "esbuild ./node_modules/@creativebulma/bulma-collapsible --bundle --minify --format=esm --main-fields=browser,module,main --outfile=./assets/bulma-collapsible.min.js",
-    "postbulma-collapsible": "replace-in-file 'this._collapsed||(this.element.style.height=this._originalHeight)' '' ./assets/bulma-collapsible.min.js",
-    "bulma-timeline": "copyfiles -f ./node_modules/bulma-timeline/dist/css/bulma-timeline.min.css assets",
-    "presetup": "npm run bulma",
-    "setup": "npm run bulma-collapsible",
-    "postsetup": "npm run bulma-timeline"
+    "build:ipfs": "esbuild ./node_modules/ipfs-core --bundle --minify --format=esm --main-fields=browser,module,main --inject:./node-globals.js --define:process.env.NODE_ENV='\"production\"' --outfile=./assets/ipfs-core.js",
+    "build:orbitdb": "esbuild ./node_modules/orbit-db --bundle --minify --format=esm --main-fields=browser,module,main --inject:./node-globals.js --define:process.env.NODE_ENV='\"production\"' --outfile=./assets/orbit-db.js",
+    "start": "snowpack dev --secure",
+    "build": "snowpack build"
   }
 }

@@ -1,0 +1,24 @@
+// Snowpack Configuration File
+// See all supported options: https://www.snowpack.dev/reference/configuration
+/** @type {import("snowpack").SnowpackUserConfig } */
+module.exports = {
+  devOptions: {
+    port: 8888,
+  },
+  plugins: [
+    [
+      "@internetarchive/snowpack-files-hash",
+      {
+        hashFiles: ["js", "css", "svg", "png", "jpg", "webp"],
+        exclude: ["snowpack.config.js"],
+        hashLength: 12,
+        searchImportsIn: ["html", "js", "css"],
+      },
+    ]
+  ],
+  optimize: {
+    bundle: true,
+    minify: true,
+    target: 'es2020',
+  },
+};
