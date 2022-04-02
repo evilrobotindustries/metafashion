@@ -1,5 +1,5 @@
 .idea
 build/
-dist/
 node_modules/
-target/
+snowpack.crt
+snowpack.key
