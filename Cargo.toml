@@ -19,9 +19,11 @@ lto = true
 
 [dependencies]
 chrono = { version = "0.4.19", features = ["serde"] }
+eth-wasm = { git = "https://github.com/evilrobotindustries/eth-wasm" }
 gloo-console = "0.2.1"
 gloo-timers = { version = "0.2.3", features = ["futures"] }
 js-sys = "0.3.56"
+num-format = "0.4.0"
 obfstr = "0.3.0"
 serde = { version = "1.0.136", features = ["derive"] }
 serde_json = "1.0.79"
@@ -44,7 +46,3 @@ web-sys = { version = "0.3.56", features = [
 ] }
 wee_alloc = "0.4.5"
 yew = "0.19.3"
-
-# todo: Temporary random string generation
-getrandom = { version = "0.2.6", features = ["js"] }
-nanoid = { version = "0.4.0" }

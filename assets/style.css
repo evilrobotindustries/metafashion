@@ -243,8 +243,12 @@ html {
     background-color: #000000;
     border: var(--foreground) 1px solid;
 }
-#site #vip-total, #site #vip-peers {
+#site .vip-metric {
     font-family: "Druk Wide Medium";
+    font-size: 1.2rem;
+}
+#site #vip-address {
+    color: var(--accent);
 }
 #site #vip-signup.is-hidden {
     display: unset !important;
