@@ -13,6 +13,7 @@ mod rewards;
 mod roadmap;
 mod team;
 mod vip;
+mod wallet;
 
 #[function_component(Site)]
 pub fn site() -> yew::Html {
