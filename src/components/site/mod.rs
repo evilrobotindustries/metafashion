@@ -54,7 +54,7 @@ pub fn site() -> yew::Html {
                 <faq::FAQ />
             </section>
             // VIP
-            <div id="vip" class="modal">
+            <div id="vip" class="modal modal-fx-3dFlipHorizontal">
                 <vip::VIP />
             </div>
             // Footer
@@ -74,8 +74,10 @@ fn on_load() {
 
     add_modals(&document);
 
+    animate();
+
     // Attach all collapsible elements
-    default::attach();
+    //default::attach();
 }
 
 fn add_navigation_listeners(document: &Document, window: &Window) {
@@ -177,45 +179,45 @@ fn add_navigation_listeners(document: &Document, window: &Window) {
             .to_list::<HtmlAnchorElement>();
         const OFFSET: i32 = 70;
 
-        let window_clone = window.clone();
-        let listener = Closure::wrap(Box::new(move |_error: JsValue| {
-            let mut current = "".to_string();
-
-            // Add class to nav once user scrolls
-            if let Ok(y) = window_clone.scroll_y() {
-                if y > 10.0 {
-                    if let Err(e) = nav.class_list().add_1("scroll") {
-                        error!("unable to add scroll class to nav: {:?}", e)
-                    }
-                } else {
-                    if let Err(e) = nav.class_list().remove_1("scroll") {
-                        error!("unable to remove scroll class from nav: {:?}", e)
-                    }
-                }
-
-                for section in &sections {
-                    if y as i32 >= section.offset_top() - OFFSET {
-                        if let Some(attribute) = section.get_attribute("id") {
-                            current = format!("#{}", attribute);
-                        }
-                    }
-                }
-
-                for item in &navbar_items {
-                    if item.hash() == current {
-                        if let Err(e) = item.class_list().add_1("is-active") {
-                            error!("unable to add is-active class to nav item: {:?}", e)
-                        }
-                    } else {
-                        if let Err(e) = item.class_list().remove_1("is-active") {
-                            error!("unable to remove is-active class from nav item: {:?}", e)
-                        }
-                    }
-                }
-            }
-        }) as Box<dyn Fn(JsValue)>);
-        window.set_onscroll(Some(listener.as_ref().unchecked_ref()));
-        listener.forget();
+        // let window_clone = window.clone();
+        // let listener = Closure::wrap(Box::new(move |_error: JsValue| {
+        //     let mut current = "".to_string();
+        //
+        //     // Add class to nav once user scrolls
+        //     if let Ok(y) = window_clone.scroll_y() {
+        //         if y > 10.0 {
+        //             if let Err(e) = nav.class_list().add_1("scroll") {
+        //                 error!("unable to add scroll class to nav: {:?}", e)
+        //             }
+        //         } else {
+        //             if let Err(e) = nav.class_list().remove_1("scroll") {
+        //                 error!("unable to remove scroll class from nav: {:?}", e)
+        //             }
+        //         }
+        //
+        //         for section in &sections {
+        //             if y as i32 >= section.offset_top() - OFFSET {
+        //                 if let Some(attribute) = section.get_attribute("id") {
+        //                     current = format!("#{}", attribute);
+        //                 }
+        //             }
+        //         }
+        //
+        //         for item in &navbar_items {
+        //             if item.hash() == current {
+        //                 if let Err(e) = item.class_list().add_1("is-active") {
+        //                     error!("unable to add is-active class to nav item: {:?}", e)
+        //                 }
+        //             } else {
+        //                 if let Err(e) = item.class_list().remove_1("is-active") {
+        //                     error!("unable to remove is-active class from nav item: {:?}", e)
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }) as Box<dyn Fn(JsValue)>);
+        // window.set_onscroll(Some(listener.as_ref().unchecked_ref()));
+        // listener.forget();
     }
 }
 
@@ -307,4 +309,10 @@ extern "C" {
 
     #[wasm_bindgen(static_method_of = default)]
     fn attach();
+}
+
+#[wasm_bindgen(module = "/assets/animate.js")]
+extern "C" {
+    #[wasm_bindgen]
+    fn animate();
 }

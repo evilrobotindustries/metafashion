@@ -41,7 +41,6 @@ body {
 html {
     background-color: var(--background);
     overflow-y: auto;
-    scroll-behavior: smooth;
     scroll-padding-top: var(--fixed-navbar-height);
 }
 
@@ -160,6 +159,9 @@ html {
 .navbar-item {
     color: var(--foreground);
 }
+a.navbar-item:focus {
+    color: var(--foreground);
+}
 .navbar-item.is-active {
     background-color: unset !important;
     color: var(--accent) !important;
@@ -239,6 +241,9 @@ html {
     text-transform: uppercase;
     max-height: calc(100vh - 100px);
 }
+#site #vip .modal-content > .container {
+    margin: 1px;
+}
 #site #vip .container .section {
     background-color: #000000;
     border: var(--foreground) 1px solid;
@@ -288,6 +293,9 @@ html {
 }
 .team .card {
     background-color: initial;
+}
+.team figure.image {
+    padding: 10px;
 }
 .team .card img {
     height: 70%;
