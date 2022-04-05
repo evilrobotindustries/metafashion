@@ -33,7 +33,7 @@ pub fn team() -> Html {
         <div class="column">
             <div class="card">
                 <figure class="image">
-                    <img class={ format!("is-rounded {}", member.class )}
+                    <img class={ format!("is-rounded animate__animated {}", member.class )}
                          src={ format!("/images/{}", member.image) }
                          alt={ member.name } />
                 </figure>

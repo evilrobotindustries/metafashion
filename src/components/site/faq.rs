@@ -56,7 +56,7 @@ pub fn faq() -> Html {
                 </a>
             </header>
             <div id={ id } class="block answer is-collapsible">
-                { faq.answer.clone() }
+                <p class="animate__animated animate__fadeIn">{ faq.answer.clone() }</p>
             </div>
         </div>
     }

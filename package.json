@@ -1,17 +1,21 @@
 {
   "devDependencies": {
     "@creativebulma/bulma-collapsible": "^1.0.4",
+    "animate.css": "^4.1.1",
     "bulma": "^0.9.3",
+    "bulma-modal-fx": "^1.1.1",
     "bulma-timeline": "^3.0.5",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.14.29",
     "replace-in-file": "^6.3.2"
   },
   "scripts": {
+    "animate": "copyfiles -f ./node_modules/animate.css/animate.min.css assets",
     "bulma": "copyfiles -f ./node_modules/bulma/css/bulma.min.css assets",
     "prebulma-collapsible": "copyfiles -f ./node_modules/@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css assets",
     "bulma-collapsible": "esbuild ./node_modules/@creativebulma/bulma-collapsible --bundle --minify --format=esm --main-fields=browser,module,main --outfile=./assets/bulma-collapsible.min.js",
     "postbulma-collapsible": "replace-in-file 'this._collapsed||(this.element.style.height=this._originalHeight)' '' ./assets/bulma-collapsible.min.js",
+    "bulma-modal-fx": "copyfiles -f ./node_modules/bulma-modal-fx/dist/css/modal-fx.min.css assets",
     "bulma-timeline": "copyfiles -f ./node_modules/bulma-timeline/dist/css/bulma-timeline.min.css assets",
     "presetup": "npm run bulma",
     "setup": "npm run bulma-collapsible",
