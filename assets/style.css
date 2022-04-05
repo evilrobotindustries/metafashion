@@ -241,7 +241,7 @@ a.navbar-item:focus {
     text-transform: uppercase;
     max-height: calc(100vh - 100px);
 }
-#site #vip .container {
+#site #vip .modal-content > .container {
     margin: 1px;
 }
 #site #vip .container .section {
