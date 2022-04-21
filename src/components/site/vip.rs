@@ -30,6 +30,7 @@ impl Component for VIP {
             api_peers: 0,
             api_status: Status::None,
             // Signup
+            signup_closed: true,
             signup_enabled: false,
             check_enabled: false,
             signup_status: Status::None,
@@ -94,8 +95,15 @@ impl Component for VIP {
                 true
             }
             Msg::MessageReceived(message) => match message {
-                Message::SignedUp { address, total, .. } => {
+                Message::SignedUp {
+                    address,
+                    total,
+                    status,
+                    ..
+                } => {
+                    debug!("signed-up message received");
                     self.entries = total;
+                    self.signup_closed = matches!(status, SignUpStatus::Closed);
                     if let Some(exists) = address {
                         if exists {
                             debug!("vip: signed-up");
@@ -112,6 +120,9 @@ impl Component for VIP {
                             self.signup_enabled = true;
                             self.check_enabled = false;
                         }
+                    } else if self.signup_closed {
+                        self.signup_enabled = false;
+                        self.api_status = Status::Fail("VIP list signup is closed".to_string());
                     }
                     true
                 }
@@ -188,7 +199,9 @@ impl Component for VIP {
                 self.signup_status = Status::None;
 
                 if self.api_connected {
-                    self.signup_enabled = true;
+                    if !self.signup_closed {
+                        self.signup_enabled = true;
+                    }
                     self.check_enabled = true;
                 }
                 true
@@ -305,6 +318,7 @@ pub struct VIP {
     api_peers: u64,
     api_status: Status,
     // Signup
+    signup_closed: bool,
     signup_enabled: bool,
     check_enabled: bool,
     signup_status: Status,
@@ -438,6 +452,7 @@ pub enum Message {
         total: u64,
         address: Option<bool>,
         last_signed_up: Option<DateTime<Utc>>,
+        status: SignUpStatus,
     },
     #[serde(rename = "peer-joined")]
     PeerJoined {
@@ -449,4 +464,10 @@ pub enum Message {
         total: u64,
         last_left: Option<DateTime<Utc>>,
     },
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub enum SignUpStatus {
+    Closed = 0,
+    Open = 1,
 }
